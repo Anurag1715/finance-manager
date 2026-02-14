@@ -8,17 +8,17 @@ import styles from './Hero.module.scss';
 
 const Hero = () => {
     return (
-        <section className={styles.savHero}>
+        <section className={styles.sav_Hero}>
             {/* Spotlight Effect Top */}
-            <div className={styles.savSpotlight} />
+            <div className={styles.sav_Spotlight} />
 
-            <div className={styles.savHeroContent}>
+            <div className={styles.sav_HeroContent}>
                 {/* Badge */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className={styles.savHeroBadge}
+                    className={styles.sav_HeroBadge}
                 >
                     Designed for Growth
                 </motion.div>
@@ -44,15 +44,15 @@ const Hero = () => {
 
                 {/* CTAs */}
                 <motion.div
-                    className={styles.savHeroActions}
+                    className={styles.sav_HeroActions}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.3 }}
                 >
-                    <Link href="/register" className={styles.savBtnPrimary}>
+                    <Link href="/register" className={styles.sav_BtnPrimary}>
                         Start Free Trial
                     </Link>
-                    <Link href="/features" className={styles.savBtnSecondary}>
+                    <Link href="/features" className={styles.sav_BtnSecondary}>
                         See How It Works <ArrowRight size={18} />
                     </Link>
                 </motion.div>
@@ -60,7 +60,7 @@ const Hero = () => {
 
             {/* Visual Core (Savique Dashboard) */}
             <motion.div
-                className={styles.savHeroVisual}
+                className={styles.sav_HeroVisual}
                 initial={{ opacity: 0, scale: 0.9, y: 40 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -89,8 +89,8 @@ const Hero = () => {
                     </div>
 
                     {/* Content */}
-                    <div style={{ padding: '2rem', display: 'grid', gridTemplateColumns: '65% 35%', gap: '2rem', flex: 1 }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                    <div style={{ padding: '2rem', display: 'flex', gap: '2rem', flex: 1 }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', flex: '0 0 65%' }}>
                             <div>
                                 <div style={{ color: '#94A3B8', fontSize: '0.9rem', fontWeight: '500', marginBottom: '0.5rem' }}>Total Net Worth</div>
                                 <div style={{ color: '#F8FAFC', fontSize: '3rem', fontWeight: '700', lineHeight: 1 }}>$142,850<span style={{ color: '#38BDF8', fontSize: '1.5rem', verticalAlign: 'top', marginLeft: '0.5rem' }}>+12%</span></div>

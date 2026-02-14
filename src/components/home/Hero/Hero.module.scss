@@ -1,7 +1,8 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixin" as *;
+@use "sass:color";
 
-.savHero {
+.sav_Hero {
     width: 100%;
     max-width: $container-width;
     margin: 0 auto;
@@ -12,7 +13,7 @@
     padding: 10rem 1.5rem 6rem;
     overflow: hidden;
 
-    .savSpotlight {
+    .sav_Spotlight {
         position: absolute;
         top: -30%;
         left: 50%;
@@ -25,7 +26,7 @@
         filter: blur(100px);
     }
 
-    .savHeroContent {
+    .sav_HeroContent {
         text-align: center;
         max-width: 900px;
         position: relative;
@@ -35,7 +36,7 @@
         align-items: center;
         gap: 2rem;
 
-        .savHeroBadge {
+        .sav_HeroBadge {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
@@ -61,8 +62,9 @@
             margin: 0;
 
             span {
-                background: linear-gradient(135deg, lighten($primary, 20%) 0%, $primary 100%);
+                background: linear-gradient(135deg, color.adjust($primary, $lightness: 20%) 0%, $primary 100%);
                 -webkit-background-clip: text;
+                background-clip: text;
                 -webkit-text-fill-color: transparent;
             }
         }
@@ -76,7 +78,7 @@
             opacity: 0.9;
         }
 
-        .savHeroActions {
+        .sav_HeroActions {
             display: flex;
             gap: 1.25rem;
             margin-top: 2rem;
@@ -87,7 +89,7 @@
                 align-items: center;
             }
 
-            .savBtnPrimary {
+            .sav_BtnPrimary {
                 background: white; // High contrast
                 color: $text-inverse;
                 padding: 1rem 2rem;
@@ -107,7 +109,7 @@
                 }
             }
 
-            .savBtnSecondary {
+            .sav_BtnSecondary {
                 background: rgba(255, 255, 255, 0.05);
                 border: 1px solid rgba(255, 255, 255, 0.1);
                 color: $text-primary;
@@ -130,7 +132,7 @@
         }
     }
 
-    .savHeroVisual {
+    .sav_HeroVisual {
         position: relative;
         width: 100%;
         max-width: 1000px;

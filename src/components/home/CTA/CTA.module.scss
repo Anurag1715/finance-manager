@@ -1,7 +1,7 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixin" as *;
 
-.savCTA {
+.sav_CTA {
     width: 100%;
     max-width: $container-width;
     margin: 0 auto;
@@ -27,7 +27,7 @@
         filter: blur(80px);
     }
 
-    .savCTAContent {
+    .sav_CTAContent {
         z-index: 2;
         max-width: 800px;
         display: flex;
@@ -49,7 +49,7 @@
             max-width: 600px;
         }
 
-        .savBtnPrimary {
+        .sav_BtnPrimary {
             background-color: $text-primary; // White
             color: $text-inverse; // Dark
             padding: 1.25rem 2.5rem;

@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 const Problem = () => {
     return (
-        <section className={styles.savProblem}>
+        <section className={styles.sav_Problem}>
             <motion.h2
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -28,7 +28,7 @@ const Problem = () => {
                 Without a unified system, your wealth stagnates in hidden subscriptions, unoptimized savings, and blind spending.
             </motion.p>
             <motion.div
-                className={styles.savSolHighlight}
+                className={styles.sav_SolHighlight}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}

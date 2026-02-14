@@ -2,70 +2,65 @@
 
 import React from 'react';
 import styles from './contact.module.scss';
+import clsx from 'clsx';
+import { Send, Mail, MessageSquare, User } from 'lucide-react';
 import Input from '@/components/ui/Input/Input';
 import Button from '@/components/ui/Button/Button';
 import Badge from '@/components/ui/Badge/Badge';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { Mail, MessageSquare } from 'lucide-react';
 
-const schema = yup.object().shape({
-    name: yup.string().required('Name is required'),
-    email: yup.string().email('Invalid email').required('Email is required'),
-    message: yup.string().required('Message is required').min(10, 'Message too short'),
-});
-
-export default function Contact() {
-    const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: yupResolver(schema),
-    });
-
-    const onSubmit = (data) => {
-        console.log("Contact Data:", data);
-        alert("Thanks for contacting Savique!");
-    };
-
+const ContactPage = () => {
     return (
-        <section className={styles.savContact}>
-            <div className={styles.savContactCard}>
-                <div className={styles.savHeader}>
-                    <Badge variant="info">Support</Badge>
+        <section className={styles.sav_Contact}>
+            <div className={styles.sav_ContactCard}>
+                <div className={styles.sav_Header}>
+                    <Badge variant="primary">Support</Badge>
                     <h1>Get in Touch</h1>
-                    <p>Have questions about Savique? We'd love to hear from you. Our team is ready to help you optimize your wealth.</p>
+                    <p>Have questions about Savique? We're here to help you scale your wealth.</p>
                 </div>
 
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form>
                     <Input
-                        label="Name"
-                        placeholder="Your Name"
-                        {...register('name')}
-                        error={errors.name?.message}
+                        label="Full Name"
+                        placeholder="John Doe"
+                        startIcon={User}
                     />
                     <Input
-                        label="Email"
-                        placeholder="you@example.com"
-                        {...register('email')}
-                        error={errors.email?.message}
+                        label="Email Address"
+                        type="email"
+                        placeholder="john@example.com"
+                        startIcon={Mail}
                     />
                     <Input
-                        label="Message"
+                        label="Subject"
                         placeholder="How can we help?"
-                        as="textarea" // Input component handles textarea? My implementation check: yes, `input, textarea` in SCSS but checking JSX... `Input.jsx` uses `input` element primarily. I should verify if I implemented textarea support. 
-                        // Looking at my Step 1659 Input.jsx: `<input ref={ref} ... />`. It does NOT support textarea switching via prop "as".
-                        // BUT user didn't ask me to fix Input component. I will stick to Input for now or add textarea support.
-                        // Wait, I should make it a textarea if usually needed.
-                        // I'll just use Input for now to be safe, or check if I updated Input.jsx to support 'as' or 'textarea'. I did not.
-                        // I will just use text input for message for now to avoid errors, or update Input.jsx.
-                        {...register('message')}
-                        error={errors.message?.message}
+                        startIcon={MessageSquare}
                     />
 
-                    <Button type="submit" variant="primary" fullWidth>
-                        Send Message <Mail size={18} />
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                        <label style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'rgba(255,255,255,0.6)', marginLeft: '0.25rem' }}>Message</label>
+                        <textarea
+                            rows={5}
+                            placeholder="Your message here..."
+                            style={{
+                                width: '100%',
+                                padding: '0.75rem 1rem',
+                                borderRadius: '12px',
+                                border: '1px solid rgba(255,255,255,0.1)',
+                                background: 'rgba(15, 23, 42, 0.4)',
+                                color: 'white',
+                                outline: 'none',
+                                resize: 'vertical'
+                            }}
+                        />
+                    </div>
+
+                    <Button fullWidth>
+                        <Send size={18} /> Send Message
                     </Button>
                 </form>
             </div>
         </section>
     );
-}
+};
+
+export default ContactPage;

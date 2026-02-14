@@ -1,7 +1,7 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixin" as *;
 
-.savPricing {
+.sav_Pricing {
     width: 100%;
     max-width: $container-width;
     margin: 0 auto;
@@ -11,7 +11,7 @@
     align-items: center;
     gap: 6rem;
 
-    .savHeader {
+    .sav_Header {
         text-align: center;
         max-width: 800px;
         display: flex;
@@ -31,19 +31,18 @@
         }
     }
 
-    .savPricingGrid {
+    .sav_PricingGrid {
         width: 100%;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        display: flex; // Changed from Grid to Flex
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 2rem;
-        align-items: center;
+        align-items: stretch; // Ensure equal height
 
-        @include respond(laptop) {
-            grid-template-columns: 1fr;
-            max-width: 600px;
-        }
-
-        .savPlanCard {
+        .sav_PlanCard {
+            flex: 1;
+            min-width: 300px;
+            max-width: 380px;
             background: rgba(255, 255, 255, 0.03); // Glass
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: $radius-xl;
@@ -55,7 +54,7 @@
             position: relative;
             backdrop-filter: blur(16px);
 
-            &.featured {
+            &.sav_Featured {
                 border-color: $primary;
                 box-shadow: 0 0 30px rgba($primary, 0.15);
                 transform: scale(1.05);
@@ -72,7 +71,7 @@
                 color: $text-primary;
             }
 
-            .price {
+            .sav_Price {
                 font-size: 2.5rem;
                 font-weight: 800;
                 color: $text-primary;
@@ -103,8 +102,9 @@
                 }
             }
 
-            .savBtnPrimary,
-            .savBtnSecondary {
+            // Buttons inside card
+            &>button,
+            &>a {
                 width: 100%;
                 justify-content: center;
                 margin-top: auto;

@@ -1,7 +1,7 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixin" as *;
 
-.savSteps {
+.sav_Steps {
     width: 100%;
     max-width: $container-width;
     margin: 0 auto;
@@ -13,7 +13,7 @@
     text-align: center;
     position: relative;
 
-    .savHeader {
+    .sav_Header {
         margin-bottom: 2rem;
         z-index: 2;
 
@@ -31,9 +31,10 @@
         }
     }
 
-    .savStepsGrid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
+    .sav_StepsGrid {
+        display: flex; // Changed from Grid to Flex
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 3rem;
         position: relative;
         width: 100%;
@@ -51,21 +52,12 @@
             z-index: 0;
 
             @include respond(laptop) {
-                display: none;
+                display: none; // Hide on smaller screens as wrapping breaks the line logic
             }
-        }
-
-        @include respond(laptop) {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        @include respond(mobile) {
-            grid-template-columns: 1fr;
         }
     }
 
-    .savStepCard {
+    .sav_StepCard {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -73,7 +65,12 @@
         position: relative;
         z-index: 1;
 
-        .savStepNumber {
+        // Flex Item sizing
+        flex: 1;
+        min-width: 220px;
+        max-width: 280px;
+
+        .sav_StepNumber {
             width: 4rem;
             height: 4rem;
             background: $bg-primary; // Hide line behind number
@@ -106,7 +103,7 @@
         }
 
         &:hover {
-            .savStepNumber {
+            .sav_StepNumber {
                 background: $primary;
                 color: $text-inverse;
                 transform: scale(1.1);

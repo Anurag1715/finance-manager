@@ -1,7 +1,7 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixin" as *;
 
-.savBadge {
+.sav_Badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -16,36 +16,36 @@
     line-height: 1.4;
     border: 1px solid transparent;
 
-    &.savBadgePrimary {
+    &.sav_BadgePrimary {
         background: rgba($primary, 0.15);
         color: $primary;
         border-color: rgba($primary, 0.2);
     }
 
-    &.savBadgeSuccess {
+    &.sav_BadgeSuccess {
         background: rgba($status-resolved, 0.15);
         color: $status-resolved;
         border-color: rgba($status-resolved, 0.2);
     }
 
-    &.savBadgeWarning {
+    &.sav_BadgeWarning {
         background: rgba($status-open, 0.15);
         color: $status-open;
         border-color: rgba($status-open, 0.2);
     }
 
-    &.savBadgeDanger {
+    &.sav_BadgeDanger {
         background: rgba($status-danger, 0.15);
         color: $status-danger;
         border-color: rgba($status-danger, 0.2);
     }
 
-    &.savBadgeInfo {
+    &.sav_BadgeInfo {
         background: rgba($primary, 0.15);
         color: $primary;
     }
 
-    &.savBadgeGray {
+    &.sav_BadgeGray {
         background: rgba(255, 255, 255, 0.05);
         color: $text-secondary;
         border-color: rgba(255, 255, 255, 0.1);

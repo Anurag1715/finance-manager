@@ -1,7 +1,7 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixin" as *;
 
-.savAbout {
+.sav_About {
     width: 100%;
     max-width: $container-width;
     margin: 0 auto;
@@ -11,7 +11,7 @@
     align-items: center;
     gap: 6rem;
 
-    .savHeader {
+    .sav_Header {
         text-align: center;
         max-width: 800px;
         display: flex;
@@ -31,17 +31,17 @@
         }
     }
 
-    .savMission {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+    .sav_Mission {
+        display: flex; // Changed from Grid to Flex
         gap: 4rem;
         align-items: center;
 
         @include respond(laptop) {
-            grid-template-columns: 1fr;
+            flex-direction: column;
         }
 
-        .savImage {
+        .sav_Image {
+            flex: 1;
             width: 100%;
             height: 400px;
             background: rgba(255, 255, 255, 0.05); // Glass Placeholder
@@ -62,7 +62,8 @@
             }
         }
 
-        .savContent {
+        .sav_Content {
+            flex: 1;
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
@@ -80,17 +81,22 @@
         }
     }
 
-    .savValues {
+    .sav_Values {
         width: 100%;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        display: flex; // Changed from Grid to Flex
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 2rem;
 
-        @include respond(laptop) {
-            grid-template-columns: 1fr;
-        }
+        .sav_ValueCard {
+            flex: 1;
+            min-width: 300px;
+            max-width: calc(33.333% - 1.34rem);
 
-        .savValueCard {
+            @include respond(laptop) {
+                max-width: 100%;
+            }
+
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: $radius-lg;

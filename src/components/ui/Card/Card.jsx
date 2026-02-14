@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 const Card = ({ children, className, ...props }) => {
     return (
-        <div className={clsx(styles.savCard, className)} {...props}>
+        <div className={clsx(styles.sav_Card, className)} {...props}>
             {children}
         </div>
     );

@@ -5,38 +5,42 @@ import styles from './about.module.scss';
 import clsx from 'clsx';
 import Badge from '@/components/ui/Badge/Badge';
 
-export default function About() {
+const AboutPage = () => {
     return (
-        <section className={styles.savAbout}>
-            <div className={styles.savHeader}>
-                <Badge variant="primary">Our Mission</Badge>
-                <h1>We Automate Your Wealth</h1>
-                <p>We believe financial freedom shouldn't require a finance degree or hours of manual tracking. Savique builds the autopilot for your money.</p>
+        <section className={styles.sav_About}>
+            <div className={styles.sav_Header}>
+                <Badge variant="primary">Our Story</Badge>
+                <h1>Redefining Wealth Intelligence</h1>
+                <p>Savique was built on a simple premise: your financial data should work for you, not against you.</p>
             </div>
 
-            <div className={styles.savMission}>
-                <div className={styles.savContent}>
-                    <h2>Obsessed with Frictionless Finance</h2>
-                    <p>Founded by engineers and investors tired of broken spreadsheets, Savique was built to solve one problem: the disconnect between earning money and growing it.</p>
-                    <p>Our platform connects every aspect of your financial life into a single, intelligent system that works for you, 24/7.</p>
+            <div className={styles.sav_Mission}>
+                <div className={styles.sav_Image}>
+                    {/* Placeholder for an image or visual */}
                 </div>
-                <div className={styles.savImage}></div>
+                <div className={styles.sav_Content}>
+                    <h2>Our Mission</h2>
+                    <p>We exist to empower people with radical clarity over their financial lives. By combining secure asset tracking with intelligent automation, we help you make informed decisions that compound over time.</p>
+                    <p>Our philosophy is rooted in sovereign privacy. We believe you should be the sole owner of your financial data, which is why we implement bank-grade encryption at every level.</p>
+                </div>
             </div>
 
-            <div className={styles.savValues}>
-                <div className={styles.savValueCard}>
+            <div className={styles.sav_Values}>
+                <div className={styles.sav_ValueCard}>
                     <h3>Transparency</h3>
-                    <p>We believe in total clarity. No hidden fees, no dark patterns, and complete visibility into where your money goes.</p>
+                    <p>We believe in open systems and clear, honest communication about how your data is handled.</p>
                 </div>
-                <div className={styles.savValueCard}>
-                    <h3>Automation</h3>
-                    <p>If a machine can do it, you shouldn't have to. We automate the boring stuff so you can focus on high-leverage decisions.</p>
+                <div className={styles.sav_ValueCard}>
+                    <h3>Security</h3>
+                    <p>Your financial fortress is our top priority. We use industry-leading encryption and local-first principles.</p>
                 </div>
-                <div className={styles.savValueCard}>
-                    <h3>Security First</h3>
-                    <p>Your data is your most valuable asset. We protect it with bank-grade encryption and never sell it to advertisers.</p>
+                <div className={styles.sav_ValueCard}>
+                    <h3>Simplicity</h3>
+                    <p>Complexity is the enemy of action. We distill complex financial data into actionable insights.</p>
                 </div>
             </div>
         </section>
     );
-}
+};
+
+export default AboutPage;

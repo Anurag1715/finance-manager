@@ -56,7 +56,7 @@ button {
     outline: none;
 }
 
-.savContainer {
+.sav_Container {
     width: 100%;
     max-width: $container-width;
     margin: 0 auto;
@@ -64,7 +64,7 @@ button {
 }
 
 // Global Surface (Card style)
-.savSurface {
+.sav_Surface {
     background-color: $bg-secondary;
     border: 1px solid $border-light;
     border-radius: $radius-lg;

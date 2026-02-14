@@ -1,29 +1,43 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixin" as *;
 
-.savContact {
+.sav_Contact {
     width: 100%;
-    min-height: calc(100vh - 4.5rem);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
-    margin-top: 4rem;
+    padding: 8rem 1.5rem 4rem; // Unified with other pages
+    position: relative;
+    overflow: hidden;
 
-    .savContactCard {
+    &::before {
+        content: '';
+        position: absolute;
+        top: -10%;
+        right: -10%;
+        width: 60%;
+        height: 60%;
+        background: radial-gradient(circle, rgba($primary, 0.15), transparent 70%);
+        filter: blur(80px);
+        z-index: 0;
+    }
+
+    .sav_ContactCard {
         width: 100%;
         max-width: 600px;
-        background: rgba(255, 255, 255, 0.03); // Glass
+        background: rgba(15, 23, 42, 0.6); // Dark Glass
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: $radius-xl;
         padding: 3rem;
-        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.6);
         display: flex;
         flex-direction: column;
         gap: 2rem;
         backdrop-filter: blur(20px);
+        z-index: 1;
 
-        .savHeader {
+        .sav_Header {
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -33,6 +47,7 @@
             h1 {
                 font-size: 2rem;
                 color: $text-primary;
+                font-weight: 700;
             }
 
             p {

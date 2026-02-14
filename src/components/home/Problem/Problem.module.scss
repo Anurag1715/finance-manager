@@ -1,7 +1,7 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixin" as *;
 
-.savProblem {
+.sav_Problem {
     width: 100%;
     max-width: $container-width;
     margin: 0 auto;
@@ -47,7 +47,7 @@
         z-index: 1;
     }
 
-    .savSolHighlight {
+    .sav_SolHighlight {
         color: $primary;
         font-size: 1.75rem;
         font-weight: 700;

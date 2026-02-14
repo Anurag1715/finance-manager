@@ -1,14 +1,14 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixin" as *;
 
-.savFooter {
-    background-color: rgba(15, 23, 42, 0.5); // Sidebar BG or Darker
+.sav_Footer {
+    background-color: rgba(15, 23, 42, 0.5);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     color: $sidebar-text;
     padding: 6rem 1.5rem 3rem;
     margin-top: auto;
 
-    .savFooterContainer {
+    .sav_FooterContainer {
         width: 100%;
         max-width: $container-width;
         margin: 0 auto;
@@ -17,22 +17,22 @@
         gap: 4rem;
     }
 
-    .savFooterTop {
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-        gap: 2rem;
-
-        @include respond(tablet) {
-            grid-template-columns: 1fr 1fr;
-        }
+    .sav_FooterTop {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4rem;
+        justify-content: space-between;
 
         @include respond(mobile) {
-            grid-template-columns: 1fr;
+            flex-direction: column;
             text-align: center;
+            align-items: center;
         }
     }
 
-    .savFooterBrand {
+    .sav_FooterBrand {
+        flex: 2;
+        min-width: 280px;
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
@@ -58,7 +58,9 @@
         }
     }
 
-    .savFooterColumn {
+    .sav_FooterColumn {
+        flex: 1;
+        min-width: 150px;
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
@@ -91,7 +93,7 @@
         }
     }
 
-    .savFooterBottom {
+    .sav_FooterBottom {
         padding-top: 2rem;
         border-top: 1px solid rgba(255, 255, 255, 0.05);
         display: flex;

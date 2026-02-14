@@ -1,7 +1,7 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixin" as *;
 
-.savFeatures {
+.sav_Features {
     width: 100%;
     max-width: $container-width;
     margin: 0 auto;
@@ -11,7 +11,7 @@
     align-items: center;
     gap: 4rem;
 
-    .savFeaturesHeader {
+    .sav_FeaturesHeader {
         text-align: center;
         max-width: 700px;
         display: flex;
@@ -27,6 +27,7 @@
             span {
                 background: linear-gradient(135deg, $text-primary 0%, $primary 100%);
                 -webkit-background-clip: text;
+                background-clip: text;
                 -webkit-text-fill-color: transparent;
             }
         }
@@ -36,7 +37,7 @@
             font-size: 1.25rem;
         }
 
-        .savBadge {
+        .sav_Badge {
             padding: 0.5rem 1rem;
             background: rgba($primary, 0.1);
             color: $primary;
@@ -48,22 +49,27 @@
         }
     }
 
-    .savFeaturesGrid {
+    .sav_FeaturesGrid {
         width: 100%;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 2rem;
+    }
+
+    .sav_FeatureCard {
+        flex: 1;
+        min-width: 300px;
+        max-width: calc(33.333% - 1.34rem);
 
         @include respond(laptop) {
-            grid-template-columns: repeat(2, 1fr);
+            max-width: calc(50% - 1rem);
         }
 
         @include respond(mobile) {
-            grid-template-columns: 1fr;
+            max-width: 100%;
         }
-    }
 
-    .savFeatureCard {
         background: rgba(255, 255, 255, 0.03); // Dark Glass
         border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: $radius-xl;
@@ -88,7 +94,7 @@
             transition: opacity 0.3s;
         }
 
-        .iconBox {
+        .sav_IconBox {
             width: 3.5rem;
             height: 3.5rem;
             background: rgba(255, 255, 255, 0.05);
@@ -125,7 +131,7 @@
                 opacity: 1;
             }
 
-            .iconBox {
+            .sav_IconBox {
                 background: $primary;
                 color: $text-inverse; // White/Dark on active
             }

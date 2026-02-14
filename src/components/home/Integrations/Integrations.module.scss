@@ -1,0 +1,81 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixin" as *;
+
+.sav_Integrations {
+    width: 100%;
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 8rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+
+    .sav_Header {
+        text-align: center;
+        max-width: 700px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+
+        h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: $text-primary;
+            line-height: 1.1;
+
+            span {
+                color: $primary;
+            }
+        }
+
+        p {
+            color: $text-secondary;
+            font-size: 1.25rem;
+        }
+    }
+
+    .sav_IntegrationsFlex {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .sav_IntegrationCard {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: $radius-lg;
+        padding: 1.5rem 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        flex: 0 1 auto;
+        min-width: 180px;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba($primary, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+
+            .sav_Icon {
+                color: $primary;
+            }
+        }
+
+        .sav_Icon {
+            color: $text-muted;
+            transition: color 0.3s;
+        }
+
+        span {
+            color: $text-primary;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+        }
+    }
+}

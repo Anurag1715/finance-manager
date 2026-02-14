@@ -6,18 +6,18 @@ const Badge = ({ children, variant = 'primary', className, ...props }) => {
 
     const getVariantClass = () => {
         switch (variant) {
-            case 'success': return styles.savBadgeSuccess;
-            case 'warning': return styles.savBadgeWarning;
-            case 'danger': return styles.savBadgeDanger;
-            case 'info': return styles.savBadgeInfo;
-            case 'gray': return styles.savBadgeGray;
-            default: return styles.savBadgePrimary;
+            case 'success': return styles.sav_BadgeSuccess;
+            case 'warning': return styles.sav_BadgeWarning;
+            case 'danger': return styles.sav_BadgeDanger;
+            case 'info': return styles.sav_BadgeInfo;
+            case 'gray': return styles.sav_BadgeGray;
+            default: return styles.sav_BadgePrimary;
         }
     };
 
     return (
         <span
-            className={clsx(styles.savBadge, getVariantClass(), className)}
+            className={clsx(styles.sav_Badge, getVariantClass(), className)}
             {...props}
         >
             {children}

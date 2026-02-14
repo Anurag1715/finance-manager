@@ -6,17 +6,17 @@ const Button = ({ variant = 'primary', size = 'md', fullWidth = false, className
 
     const getVariantClass = () => {
         switch (variant) {
-            case 'secondary': return styles.savBtnSecondary;
-            case 'ghost': return styles.savBtnGhost;
-            case 'outline': return styles.savBtnOutline;
-            default: return styles.savBtnPrimary;
+            case 'secondary': return styles.sav_BtnSecondary;
+            case 'ghost': return styles.sav_BtnGhost;
+            case 'outline': return styles.sav_BtnOutline;
+            default: return styles.sav_BtnPrimary;
         }
     };
 
     const getSizeClass = () => {
         switch (size) {
-            case 'lg': return styles.savBtnLg;
-            case 'sm': return styles.savBtnSm;
+            case 'lg': return styles.sav_BtnLg;
+            case 'sm': return styles.sav_BtnSm;
             default: return '';
         }
     };
@@ -24,10 +24,10 @@ const Button = ({ variant = 'primary', size = 'md', fullWidth = false, className
     return (
         <button
             className={clsx(
-                styles.savButton,
+                styles.sav_Button,
                 getVariantClass(),
                 getSizeClass(),
-                fullWidth && styles.savBtnFull,
+                fullWidth && styles.sav_BtnFull,
                 className
             )}
             {...props}

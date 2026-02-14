@@ -1,7 +1,8 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixin" as *;
+@use "sass:color";
 
-.savInputGroup {
+.sav_InputGroup {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -15,7 +16,7 @@
         letter-spacing: 0.02em;
     }
 
-    .savInputWrapper {
+    .sav_InputWrapper {
         position: relative;
         display: flex;
         align-items: center;
@@ -26,10 +27,10 @@
             padding: 0.75rem 1rem;
             border-radius: $radius-md;
             border: 1px solid rgba(255, 255, 255, 0.1); // Dark border
-            background-color: rgba(0, 0, 0, 0.2); // Darker input bg
+            background-color: rgba(15, 23, 42, 0.4); // Darker input bg
             font-size: 0.9375rem;
             color: $text-primary;
-            transition: all 0.2s ease;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             outline: none;
             font-family: inherit;
 
@@ -38,14 +39,14 @@
             }
 
             &:hover {
-                border-color: rgba(255, 255, 255, 0.2);
-                background-color: rgba(0, 0, 0, 0.3);
+                border-color: rgba(255, 255, 255, 0.25);
+                background-color: rgba(15, 23, 42, 0.6);
             }
 
             &:focus {
                 border-color: $primary;
-                box-shadow: 0 0 0 3px rgba($primary, 0.15);
-                background-color: rgba(0, 0, 0, 0.4);
+                box-shadow: 0 0 0 4px rgba($primary, 0.15);
+                background-color: rgba(15, 23, 42, 0.8);
             }
 
             &:disabled {
@@ -54,11 +55,11 @@
                 cursor: not-allowed;
             }
 
-            &.savInputError {
+            &.sav_InputError {
                 border-color: $status-danger;
 
                 &:focus {
-                    box-shadow: 0 0 0 3px rgba($status-danger, 0.15);
+                    box-shadow: 0 0 0 4px rgba($status-danger, 0.15);
                 }
             }
         }
@@ -68,26 +69,61 @@
             min-height: 100px;
         }
 
-        .savInputIcon {
+        .sav_StartIcon {
             position: absolute;
             left: 1rem;
             color: $text-secondary;
             pointer-events: none;
+            opacity: 0.7;
+            transition: color 0.2s;
         }
 
-        &.hasIcon input {
-            padding-left: 2.75rem;
+        .sav_EndIcon {
+            position: absolute;
+            right: 1rem;
+            color: $text-secondary;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: all 0.2s;
+
+            &:hover {
+                color: $text-primary;
+                opacity: 1;
+            }
+        }
+
+        &.hasStartIcon input {
+            padding-left: 3rem;
+        }
+
+        &.hasEndIcon input {
+            padding-right: 3rem;
+        }
+
+        // Focus within changes icon color
+        &:focus-within {
+
+            .sav_StartIcon,
+            .sav_EndIcon {
+                color: $primary;
+                opacity: 1;
+            }
+
+            .sav_EndIcon:hover {
+                color: color.adjust($primary, $lightness: 10%);
+            }
         }
     }
 
-    .savErrorMessage {
+    .sav_ErrorMessage {
         font-size: 0.75rem;
         color: $status-danger;
         margin-left: 0.25rem;
         display: flex;
         align-items: center;
-        gap: 0.25rem;
-        animation: slideDown 0.2s ease-out;
+        gap: 0.35rem;
+        font-weight: 500;
+        animation: slideDown 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
 

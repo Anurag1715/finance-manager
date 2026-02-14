@@ -1,7 +1,8 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixin" as *;
+@use "sass:color";
 
-.savButton {
+.sav_Button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -21,7 +22,7 @@
         cursor: not-allowed;
     }
 
-    &.savBtnPrimary {
+    &.sav_BtnPrimary {
         background-color: $primary;
         color: $text-inverse;
         box-shadow: 0 4px 12px rgba($primary, 0.3);
@@ -29,7 +30,7 @@
         &:hover:not(:disabled) {
             transform: translateY(-1px);
             box-shadow: 0 6px 16px rgba($primary, 0.4);
-            background-color: lighten($primary, 5%);
+            background-color: color.adjust($primary, $lightness: 5%);
         }
 
         &:active:not(:disabled) {
@@ -37,7 +38,7 @@
         }
     }
 
-    &.savBtnSecondary {
+    &.sav_BtnSecondary {
         background-color: rgba(255, 255, 255, 0.05);
         color: $text-primary;
         border-color: rgba(255, 255, 255, 0.1);
@@ -49,7 +50,7 @@
         }
     }
 
-    &.savBtnGhost {
+    &.sav_BtnGhost {
         background-color: transparent;
         color: $text-secondary;
 
@@ -59,7 +60,7 @@
         }
     }
 
-    &.savBtnOutline {
+    &.sav_BtnOutline {
         background-color: transparent;
         border-color: rgba($primary, 0.5);
         color: $primary;
@@ -70,17 +71,17 @@
         }
     }
 
-    &.savBtnLg {
+    &.sav_BtnLg {
         padding: 0.875rem 2.25rem;
         font-size: 1.0625rem;
     }
 
-    &.savBtnSm {
+    &.sav_BtnSm {
         padding: 0.5rem 1rem;
         font-size: 0.8125rem;
     }
 
-    &.savBtnFull {
+    &.sav_BtnFull {
         width: 100%;
     }
 }
