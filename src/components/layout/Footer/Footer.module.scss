@@ -1,0 +1,108 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixin" as *;
+
+.civ_footer {
+    width: 100%;
+    background-color: $bg-dark;
+    padding: $space-32 10%;
+    display: flex;
+    flex-direction: column;
+    gap: $space-16;
+
+    @include respond(tablet) {
+        padding: $space-16 $space-6;
+        gap: $space-12;
+    }
+
+    &__grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 2fr repeat(3, 1fr);
+        gap: $space-12;
+
+        @include respond(laptop) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @include respond(tablet) {
+            grid-template-columns: 1fr;
+            gap: $space-10;
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: $space-6;
+    }
+
+    &__logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: $primary-light;
+        display: flex;
+        align-items: center;
+        gap: $space-2;
+
+        span {
+            color: white;
+        }
+    }
+
+    &__description {
+        color: $text-light;
+        font-size: 0.9375rem;
+        line-height: 1.7;
+    }
+
+    &__col {
+        display: flex;
+        flex-direction: column;
+        gap: $space-6;
+    }
+
+    &__title {
+        color: white;
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: column;
+        gap: $space-4;
+    }
+
+    &__link {
+        color: $text-light;
+        font-size: 0.9375rem;
+        @include transition-premium;
+
+        &:hover {
+            color: $primary-light;
+            transform: translateX(4px);
+        }
+    }
+
+    &__bottom {
+        width: 100%;
+        padding-top: $space-8;
+        border-top: 1px solid rgba($text-light, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include respond(tablet) {
+            flex-direction: column;
+            gap: $space-4;
+            text-align: center;
+        }
+
+        p {
+            color: $text-light;
+            font-size: 0.875rem;
+        }
+    }
+}

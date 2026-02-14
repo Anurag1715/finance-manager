@@ -1,0 +1,94 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixin" as *;
+
+.civ_navbar {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    @include glass;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+
+    &__container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10%; // Large side padding instead of max-width
+
+        @include respond(laptop) {
+            padding: 0 5%;
+        }
+
+        @include respond(tablet) {
+            padding: 0 $space-6;
+        }
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        gap: $space-2;
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: $primary;
+        @include transition-premium;
+
+        span {
+            color: $text-main;
+        }
+
+        &:hover {
+            transform: scale(1.02);
+            opacity: 0.9;
+        }
+    }
+
+    &__links {
+        display: flex;
+        gap: $space-10;
+        align-items: center;
+
+        @include respond(tablet) {
+            display: none;
+        }
+    }
+
+    &__link {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: $text-muted;
+        position: relative;
+        @include transition-premium;
+
+        &:hover {
+            color: $primary;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: $primary;
+            @include transition-premium;
+            transform: translateX(-50%);
+        }
+
+        &:hover::after {
+            width: 100%;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        gap: $space-4;
+        align-items: center;
+    }
+}

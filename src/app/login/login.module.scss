@@ -1,0 +1,101 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixin" as *;
+
+.civ_auth {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $space-20 5%;
+    background: radial-gradient(circle at 0% 0%, rgba($primary, 0.05) 0%, transparent 40%), $bg-main;
+
+    &__card {
+        width: 32rem;
+        background-color: white;
+        padding: $space-16;
+        border-radius: $radius-lg;
+        @include shadow-lg;
+        border: 1px solid $border-color;
+        display: flex;
+        flex-direction: column;
+        gap: $space-10;
+
+        @include respond(tablet) {
+            width: 100%;
+            padding: $space-8;
+        }
+    }
+
+    &__header {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: $space-3;
+
+        h1 {
+            font-size: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            color: $text-muted;
+            font-size: 1rem;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: $space-6;
+    }
+
+    &__error {
+        background-color: rgba($danger, 0.05);
+        border: 1px solid rgba($danger, 0.1);
+        color: $danger;
+        padding: $space-4;
+        border-radius: $radius;
+        font-size: 0.875rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: $space-2;
+    }
+
+    &__footer {
+        text-align: center;
+        font-size: 0.9375rem;
+        color: $text-muted;
+
+        a {
+            color: $primary;
+            font-weight: 700;
+            @include transition-premium;
+
+            &:hover {
+                color: $primary-dark;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__divider {
+        display: flex;
+        align-items: center;
+        gap: $space-4;
+        color: $text-light;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+
+        &::before,
+        &::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: $border-color;
+        }
+    }
+}

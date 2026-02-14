@@ -1,0 +1,45 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixin" as *;
+
+.civ_badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: $space-1 $space-3;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: $radius-full;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    @include transition-standard;
+
+    &--success {
+        background-color: rgba($success, 0.1);
+        color: $success;
+        border: 1px solid rgba($success, 0.2);
+    }
+
+    &--warning {
+        background-color: rgba($warning, 0.1);
+        color: $warning;
+        border: 1px solid rgba($warning, 0.2);
+    }
+
+    &--error {
+        background-color: rgba($danger, 0.1);
+        color: $danger;
+        border: 1px solid rgba($danger, 0.2);
+    }
+
+    &--info {
+        background-color: rgba($primary, 0.1);
+        color: $primary;
+        border: 1px solid rgba($primary, 0.2);
+    }
+
+    &--gray {
+        background-color: $bg-main;
+        color: $text-muted;
+        border: 1px solid $border-color;
+    }
+}

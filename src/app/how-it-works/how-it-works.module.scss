@@ -1,0 +1,113 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixin" as *;
+
+.civ_how {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &__hero {
+        width: 100%;
+        padding: $space-32 10%;
+        background-color: $bg-white;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $space-6;
+
+        @include respond(tablet) {
+            padding: $space-20 $space-6;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: $text-main;
+        }
+    }
+
+    &__steps {
+        width: 100%;
+        padding: $space-32 10%;
+        background-color: $bg-main;
+        display: flex;
+        flex-direction: column;
+        gap: $space-24;
+
+        @include respond(tablet) {
+            padding: $space-20 $space-6;
+            gap: $space-16;
+        }
+    }
+
+    &__step {
+        width: 100%;
+        display: flex;
+        gap: $space-32;
+        align-items: center;
+
+        @include respond(laptop) {
+            gap: $space-12;
+        }
+
+        @include respond(tablet) {
+            flex-direction: column;
+            text-align: center;
+            gap: $space-8;
+        }
+
+        &:nth-child(even) {
+            flex-direction: row-reverse;
+
+            @include respond(tablet) {
+                flex-direction: column;
+            }
+        }
+
+        &-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: $space-6;
+
+            .step-num {
+                font-size: 4rem;
+                font-weight: 900;
+                color: rgba($primary, 0.05);
+                line-height: 1;
+                font-family: serif; // For a premium, distinct look
+            }
+
+            h2 {
+                font-size: 2.5rem;
+                color: $text-main;
+            }
+
+            p {
+                font-size: 1.125rem;
+                line-height: 1.8;
+                color: $text-muted;
+            }
+        }
+
+        &-image {
+            flex: 1;
+            width: 100%;
+            aspect-ratio: 16/10;
+            background-color: white;
+            border-radius: $radius-lg;
+            border: 1px solid $border-color;
+            @include flex-center;
+            @include shadow-lg;
+            color: $text-light;
+            font-weight: 600;
+        }
+    }
+
+    &__cta {
+        padding: $space-16 0;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+}

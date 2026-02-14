@@ -1,0 +1,44 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixin" as *;
+
+.civ_card {
+    @include card-modern;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &__header {
+        padding: $space-8;
+        border-bottom: 1px solid $border-light;
+        display: flex;
+        flex-direction: column;
+        gap: $space-1;
+
+        h3 {
+            font-size: 1.25rem;
+            color: $text-main;
+        }
+
+        p {
+            font-size: 0.875rem;
+            color: $text-muted;
+        }
+    }
+
+    &__body {
+        padding: $space-8;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: $space-4;
+    }
+
+    &__footer {
+        padding: $space-6 $space-8;
+        background-color: rgba($bg-main, 0.5);
+        border-top: 1px solid $border-light;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}

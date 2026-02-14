@@ -1,0 +1,141 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixin" as *;
+
+.civ_about {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &__hero {
+        width: 100%;
+        padding: $space-32 10%;
+        background-color: $bg-white;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $space-6;
+
+        @include respond(tablet) {
+            padding: $space-20 $space-6;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: $text-main;
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+    }
+
+    &__grid {
+        width: 100%;
+        padding: $space-32 10%;
+        background-color: $bg-main;
+        display: flex;
+        gap: $space-20;
+        align-items: center;
+
+        @include respond(tablet) {
+            flex-direction: column;
+            padding: $space-20 $space-6;
+            gap: $space-12;
+        }
+
+        &-image {
+            flex: 1;
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, $primary-light 0%, $primary 100%);
+            border-radius: $radius-lg;
+            @include flex-center;
+            @include shadow-lg;
+            color: white;
+            opacity: 0.9;
+        }
+
+        &-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: $space-8;
+
+            h2 {
+                font-size: 2.25rem;
+                line-height: 1.2;
+            }
+
+            p {
+                font-size: 1.0625rem;
+                line-height: 1.8;
+            }
+        }
+    }
+
+    &__values {
+        width: 100%;
+        padding: $space-32 10%;
+        background-color: $bg-white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $space-20;
+
+        @include respond(tablet) {
+            padding: $space-20 $space-6;
+        }
+
+        &-header {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: $space-4;
+
+            h3 {
+                font-size: 2rem;
+            }
+        }
+
+        &-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: $space-8;
+
+            @include respond(tablet) {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        &-card {
+            text-align: center;
+            padding: $space-10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: $space-6;
+
+            .icon-box {
+                color: $primary;
+                background-color: rgba($primary, 0.05);
+                width: 64px;
+                height: 64px;
+                border-radius: $radius;
+                @include flex-center;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 0.9375rem;
+                line-height: 1.6;
+            }
+        }
+    }
+}
