@@ -1,52 +1,56 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
 import styles from './Footer.module.scss';
-import { MapPin } from 'lucide-react';
+import { LayoutGrid } from 'lucide-react';
 
 const Footer = () => {
     return (
-        <footer className={styles.civ_footer}>
-            <div className={styles.civ_footer__container}>
-                <div className={styles.civ_footer__info}>
-                    <div className={styles.civ_footer__logo}>
-                        <MapPin size={32} />
-                        <span>Civic<span>Track</span></span>
+        <footer className={styles.savFooter}>
+            <div className={styles.savFooterContainer}>
+                <div className={styles.savFooterTop}>
+                    <div className={styles.savFooterBrand}>
+                        <h3><LayoutGrid size={24} color="#38BDF8" /> Savique</h3>
+                        <p>Velocity for your wealth. Automate tracking, optimize growth, and reclaim your time.</p>
                     </div>
-                    <p className={styles.civ_footer__description}>
-                        Empowering citizens to report issues and municipalities to solve them efficiently.
-                        A cleaner, safer, and better community for everyone.
-                    </p>
-                </div>
 
-                <div>
-                    <h4 className={styles.civ_footer__col_title}>Platform</h4>
-                    <div className={styles.civ_footer__links}>
-                        <Link href="/" className={styles.civ_footer__link}>Home</Link>
-                        <Link href="/how-it-works" className={styles.civ_footer__link}>How It Works</Link>
-                        <Link href="/register" className={styles.civ_footer__link}>Report Issue</Link>
+                    <div className={styles.savFooterColumn}>
+                        <h4>Product</h4>
+                        <ul>
+                            <li><Link href="/features">Features</Link></li>
+                            <li><Link href="/pricing">Pricing</Link></li>
+                            <li><Link href="/register">Get Started</Link></li>
+                        </ul>
                     </div>
-                </div>
 
-                <div>
-                    <h4 className={styles.civ_footer__col_title}>Company</h4>
-                    <div className={styles.civ_footer__links}>
-                        <Link href="/about" className={styles.civ_footer__link}>About Us</Link>
-                        <Link href="/contact" className={styles.civ_footer__link}>Contact</Link>
-                        <Link href="/privacy" className={styles.civ_footer__link}>Privacy Policy</Link>
+                    <div className={styles.savFooterColumn}>
+                        <h4>Company</h4>
+                        <ul>
+                            <li><Link href="/about">About Us</Link></li>
+                            <li><Link href="/careers">Careers</Link></li>
+                            <li><Link href="/contact">Contact</Link></li>
+                        </ul>
                     </div>
-                </div>
 
-                <div>
-                    <h4 className={styles.civ_footer__col_title}>Contact</h4>
-                    <div className={styles.civ_footer__links}>
-                        <span className={styles.civ_footer__link}>support@civictrack.gov</span>
-                        <span className={styles.civ_footer__link}>+1 (555) 000-0000</span>
+                    <div className={styles.savFooterColumn}>
+                        <h4>Support</h4>
+                        <ul>
+                            <li><Link href="/help">Help Center</Link></li>
+                            <li><Link href="/privacy">Privacy Policy</Link></li>
+                            <li><Link href="/terms">Terms of Service</Link></li>
+                        </ul>
                     </div>
                 </div>
-            </div>
 
-            <div className={styles.civ_footer__bottom}>
-                <p>&copy; {new Date().getFullYear()} CivicTrack. All rights reserved.</p>
+                <div className={styles.savFooterBottom}>
+                    <p>&copy; {new Date().getFullYear()} Savique Inc. All rights reserved.</p>
+                    <div style={{ display: 'flex', gap: '1.5rem' }}>
+                        <Link href="#">Twitter</Link>
+                        <Link href="#">LinkedIn</Link>
+                        <Link href="#">Instagram</Link>
+                    </div>
+                </div>
             </div>
         </footer>
     );

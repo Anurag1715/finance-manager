@@ -3,30 +3,39 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from './Navbar.module.scss';
-import Button from '../../ui/Button/Button';
-import { MapPin } from 'lucide-react';
+import clsx from 'clsx';
+import { LayoutGrid } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
+    const pathname = usePathname();
+
+    const isActive = (path) => pathname === path ? styles.savActive : '';
+
     return (
-        <nav className={styles.civ_navbar}>
-            <div className={styles.civ_navbar__container}>
-                <Link href="/" className={styles.civ_navbar__logo}>
-                    <MapPin size={32} />
-                    <span>Civic<span>Track</span></span>
+        <nav className={styles.savNavbar}>
+            <div className={styles.savNavbarContainer}>
+                {/* 1. Logo Left */}
+                <Link href="/" className={styles.savNavbarLogo}>
+                    <LayoutGrid className={styles.savLogoIcon} size={24} color="#38BDF8" />
+                    <span>Savique</span>
                 </Link>
 
-                <div className={styles.civ_navbar__links}>
-                    <Link href="/about" className={styles.civ_navbar__link}>About</Link>
-                    <Link href="/how-it-works" className={styles.civ_navbar__link}>How It Works</Link>
-                    <Link href="/contact" className={styles.civ_navbar__link}>Contact</Link>
+                {/* 2. Links Center */}
+                <div className={styles.savNavbarLinks}>
+                    <Link href="/" className={clsx(styles.savNavbarLink, isActive('/'))}>Home</Link>
+                    <Link href="/features" className={clsx(styles.savNavbarLink, isActive('/features'))}>Features</Link>
+                    <Link href="/how-it-works" className={clsx(styles.savNavbarLink, isActive('/how-it-works'))}>How It Works</Link>
+                    <Link href="/pricing" className={clsx(styles.savNavbarLink, isActive('/pricing'))}>Pricing</Link>
                 </div>
 
-                <div className={styles.civ_navbar__actions}>
-                    <Link href="/login">
-                        <Button variant="ghost">Login</Button>
+                {/* 3. Actions Right */}
+                <div className={styles.savNavbarActions}>
+                    <Link href="/login" className={styles.savNavbarLink}>
+                        Log In
                     </Link>
-                    <Link href="/register">
-                        <Button>Get Started</Button>
+                    <Link href="/register" className={styles.savBtnSignup}>
+                        Get Started
                     </Link>
                 </div>
             </div>

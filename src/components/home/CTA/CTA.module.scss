@@ -1,0 +1,73 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixin" as *;
+
+.savCTA {
+    width: 100%;
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 10rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    // Conic gradient background
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 150%;
+        height: 150%;
+        background: radial-gradient(circle, rgba($primary, 0.15) 0%, transparent 70%);
+        z-index: 0;
+        filter: blur(80px);
+    }
+
+    .savCTAContent {
+        z-index: 2;
+        max-width: 800px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+
+        h2 {
+            font-size: clamp(3rem, 7vw, 5rem);
+            color: $text-primary;
+            line-height: 1.0;
+            letter-spacing: -0.05em;
+            margin: 0;
+        }
+
+        p {
+            font-size: 1.25rem;
+            color: $text-secondary;
+            max-width: 600px;
+        }
+
+        .savBtnPrimary {
+            background-color: $text-primary; // White
+            color: $text-inverse; // Dark
+            padding: 1.25rem 2.5rem;
+            border-radius: 99rem;
+            font-size: 1.125rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            margin-top: 1rem;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+
+            &:hover {
+                transform: scale(1.05);
+                box-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
+            }
+        }
+    }
+}

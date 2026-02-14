@@ -2,63 +2,41 @@
 
 import React from 'react';
 import styles from './about.module.scss';
-import { Target, Users, Award } from 'lucide-react';
-import Card from '@/components/ui/Card/Card';
+import clsx from 'clsx';
+import Badge from '@/components/ui/Badge/Badge';
 
 export default function About() {
     return (
-        <div className={styles.civ_about}>
-            <section className={styles.civ_about__hero}>
-                <h2 className="civ_badge civ_badge--info">Our Story</h2>
-                <h1>About CivicTrack</h1>
-                <p>
-                    We bridge the gap between citizens and their local government,
-                    making community improvement accessible and transparent for everyone.
-                </p>
-            </section>
+        <section className={styles.savAbout}>
+            <div className={styles.savHeader}>
+                <Badge variant="primary">Our Mission</Badge>
+                <h1>We Automate Your Wealth</h1>
+                <p>We believe financial freedom shouldn't require a finance degree or hours of manual tracking. Savique builds the autopilot for your money.</p>
+            </div>
 
-            <section className={styles.civ_about__grid}>
-                <div className={styles['civ_about__grid-image']}>
-                    [Mission Illustration]
+            <div className={styles.savMission}>
+                <div className={styles.savContent}>
+                    <h2>Obsessed with Frictionless Finance</h2>
+                    <p>Founded by engineers and investors tired of broken spreadsheets, Savique was built to solve one problem: the disconnect between earning money and growing it.</p>
+                    <p>Our platform connects every aspect of your financial life into a single, intelligent system that works for you, 24/7.</p>
                 </div>
-                <div className={styles['civ_about__grid-content']}>
-                    <h2>Empowering Better Governance</h2>
-                    <p>
-                        CivicTrack was founded on the belief that technology can empower communities
-                        to solve local problems. We provide the tools needed to report issues easily
-                        and ensure they are addressed by the right authorities.
-                    </p>
-                    <p>
-                        By creating a transparent ecosystem, we foster trust between citizens and
-                        municipal officers, leading to faster resolutions and a more engaged community.
-                    </p>
-                </div>
-            </section>
+                <div className={styles.savImage}></div>
+            </div>
 
-            <section className={styles.civ_about__values}>
-                <div className={styles['civ_about__values-header']}>
-                    <h2 className="civ_badge civ_badge--info">Our Values</h2>
-                    <h3>What Drives Us</h3>
+            <div className={styles.savValues}>
+                <div className={styles.savValueCard}>
+                    <h3>Transparency</h3>
+                    <p>We believe in total clarity. No hidden fees, no dark patterns, and complete visibility into where your money goes.</p>
                 </div>
-
-                <div className={styles['civ_about__values-grid']}>
-                    <Card className={styles['civ_about__values-card']}>
-                        <div className={styles['icon-box']}><Target size={40} /></div>
-                        <h3>Transparency</h3>
-                        <p>Every report is tracked and visible, ensuring accountability at all levels of government.</p>
-                    </Card>
-                    <Card className={styles['civ_about__values-card']}>
-                        <div className={styles['icon-box']}><Users size={40} /></div>
-                        <h3>Community</h3>
-                        <p>We believe in the power of collective action to improve our shared living spaces and cities.</p>
-                    </Card>
-                    <Card className={styles['civ_about__values-card']}>
-                        <div className={styles['icon-box']}><Award size={40} /></div>
-                        <h3>Efficiency</h3>
-                        <p>Streamlining the workflow to resolve issues significantly faster than traditional bureaucratic methods.</p>
-                    </Card>
+                <div className={styles.savValueCard}>
+                    <h3>Automation</h3>
+                    <p>If a machine can do it, you shouldn't have to. We automate the boring stuff so you can focus on high-leverage decisions.</p>
                 </div>
-            </section>
-        </div>
+                <div className={styles.savValueCard}>
+                    <h3>Security First</h3>
+                    <p>Your data is your most valuable asset. We protect it with bank-grade encryption and never sell it to advertisers.</p>
+                </div>
+            </div>
+        </section>
     );
 }

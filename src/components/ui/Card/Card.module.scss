@@ -1,44 +1,19 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixin" as *;
 
-.civ_card {
-    @include card-modern;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+.savCard {
+    background: rgba(255, 255, 255, 0.03); // Glass
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    border-radius: $radius-lg;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(16px);
+    transition: all 0.3s;
 
-    &__header {
-        padding: $space-8;
-        border-bottom: 1px solid $border-light;
-        display: flex;
-        flex-direction: column;
-        gap: $space-1;
-
-        h3 {
-            font-size: 1.25rem;
-            color: $text-main;
-        }
-
-        p {
-            font-size: 0.875rem;
-            color: $text-muted;
-        }
-    }
-
-    &__body {
-        padding: $space-8;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: $space-4;
-    }
-
-    &__footer {
-        padding: $space-6 $space-8;
-        background-color: rgba($bg-main, 0.5);
-        border-top: 1px solid $border-light;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
+    &:hover {
+        border-color: rgba($primary, 0.3);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
     }
 }

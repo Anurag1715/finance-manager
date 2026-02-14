@@ -1,5 +1,7 @@
-@use "variables" as *;
-@use "mixin" as *;
+@use "./variables" as *;
+@use "./mixin" as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 
 * {
     margin: 0;
@@ -10,30 +12,19 @@
 html {
     font-size: 16px;
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    height: 100%;
 }
 
 body {
     font-family: $font-main;
-    background-color: $bg-main;
-    color: $text-main;
+    // Savique Dark Theme
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    background-attachment: fixed;
+    color: $text-primary;
     line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-ul {
-    list-style: none;
-}
-
-button {
-    font-family: inherit;
-    cursor: pointer;
-    outline: none;
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
 h1,
@@ -42,106 +33,40 @@ h3,
 h4,
 h5,
 h6 {
-    color: $text-main;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-}
-
-p {
-    color: $text-muted;
-    font-weight: 400;
-}
-
-// Layout Utility Base
-.civ_section-full {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: $space-32 $space-8;
-
-    @include respond(tablet) {
-        padding: $space-16 $space-4;
-    }
-}
-
-.civ_row {
-    width: 100%;
-    display: flex;
-    gap: $space-8;
-
-    @include respond(tablet) {
-        flex-direction: column;
-        gap: $space-6;
-    }
-}
-
-.civ_grid-3 {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: $space-8;
-
-    @include respond(laptop) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @include respond(tablet) {
-        grid-template-columns: 1fr;
-    }
-}
-
-// Badge Color System
-.civ_status-badge {
-    padding: $space-1 $space-3;
-    border-radius: $radius-full;
-    font-size: 0.75rem;
+    color: $text-primary;
     font-weight: 700;
-    text-transform: uppercase;
-    display: inline-flex;
-    align-items: center;
-    gap: $space-2;
-    border: 1px solid transparent;
-
-    &--primary {
-        background-color: rgba($primary, 0.08);
-        color: $primary;
-        border-color: rgba($primary, 0.1);
-    }
-
-    &--success {
-        background-color: rgba($success, 0.08);
-        color: $success;
-        border-color: rgba($success, 0.1);
-    }
-
-    &--warning {
-        background-color: rgba($warning, 0.08);
-        color: $warning;
-        border-color: rgba($warning, 0.1);
-    }
-
-    &--danger {
-        background-color: rgba($danger, 0.08);
-        color: $danger;
-        border-color: rgba($danger, 0.1);
-    }
+    line-height: 1.2;
+    letter-spacing: -0.025em;
 }
 
-// Custom Scrollbar for premium feel
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: $bg-main;
-}
-
-::-webkit-scrollbar-thumb {
-    background: $border-color;
-    border-radius: $radius-full;
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
 
     &:hover {
-        background: $text-light;
+        color: $primary;
     }
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.savContainer {
+    width: 100%;
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+// Global Surface (Card style)
+.savSurface {
+    background-color: $bg-secondary;
+    border: 1px solid $border-light;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-soft;
 }

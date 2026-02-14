@@ -1,0 +1,118 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixin" as *;
+
+.savSteps {
+    width: 100%;
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 8rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    text-align: center;
+    position: relative;
+
+    .savHeader {
+        margin-bottom: 2rem;
+        z-index: 2;
+
+        h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: $text-primary;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.25rem;
+            color: $text-secondary;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    }
+
+    .savStepsGrid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3rem;
+        position: relative;
+        width: 100%;
+        z-index: 2;
+
+        // Connecting Line
+        &::before {
+            content: '';
+            position: absolute;
+            top: 2rem; // Align with number
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 0;
+
+            @include respond(laptop) {
+                display: none;
+            }
+        }
+
+        @include respond(laptop) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        @include respond(mobile) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .savStepCard {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        position: relative;
+        z-index: 1;
+
+        .savStepNumber {
+            width: 4rem;
+            height: 4rem;
+            background: $bg-primary; // Hide line behind number
+            border: 1px solid rgba($primary, 0.5);
+            color: $primary;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba($primary, 0.2);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+            // To mask the line
+            position: relative;
+            z-index: 2;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: $text-primary;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1rem;
+            color: $text-secondary;
+            line-height: 1.6;
+        }
+
+        &:hover {
+            .savStepNumber {
+                background: $primary;
+                color: $text-inverse;
+                transform: scale(1.1);
+                box-shadow: 0 0 30px rgba($primary, 0.4);
+                border-color: transparent;
+            }
+        }
+    }
+}

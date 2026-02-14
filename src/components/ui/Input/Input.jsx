@@ -1,40 +1,31 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styles from './Input.module.scss';
-import { clsx } from 'clsx';
+import clsx from 'clsx';
+import { AlertCircle } from 'lucide-react';
 
-const Input = React.forwardRef(({
-    label,
-    error,
-    type = 'text',
-    className,
-    ...props
-}, ref) => {
+const Input = forwardRef(({ label, error, icon: Icon, className, ...props }, ref) => {
     return (
-        <div className={styles['civ_input-group']}>
-            {label && (
-                <label className={styles['civ_input-group__label']}>
-                    {label}
-                </label>
-            )}
-            <input
-                ref={ref}
-                type={type}
-                className={clsx(
-                    styles['civ_input-group__field'],
-                    error && styles['civ_input-group__field--error'],
-                    className
-                )}
-                {...props}
-            />
+        <div className={clsx(styles.savInputGroup, className)}>
+            {label && <label>{label}</label>}
+
+            <div className={clsx(styles.savInputWrapper, Icon && styles.hasIcon)}>
+                {Icon && <Icon size={18} className={styles.savInputIcon} />}
+
+                <input
+                    ref={ref}
+                    className={clsx(error && styles.savInputError)}
+                    {...props}
+                />
+            </div>
+
             {error && (
-                <span className={styles['civ_input-group__error-message']}>
-                    {error.message}
+                <span className={styles.savErrorMessage}>
+                    <AlertCircle size={12} /> {error}
                 </span>
             )}
         </div>
     );
 });
 
-Input.displayName = 'Input';
-
+Input.displayName = "Input";
 export default Input;

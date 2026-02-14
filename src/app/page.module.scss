@@ -1,255 +1,262 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixin" as *;
 
-.civ_home {
+.civ-home {
     width: 100%;
+    min-height: 100vh;
+    background-color: $bg-dark;
+    overflow: hidden;
+    position: relative;
+    padding-top: 100px; // Space for fixed navbar
+}
+
+// Hero Section
+.civ-hero {
+    width: 100%;
+    max-width: $container-width;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 4rem 1.5rem 8rem;
 
-    &__hero {
-        width: 100%;
-        min-height: 85vh;
-        padding: $space-32 10%;
-        background: radial-gradient(circle at 0% 0%, rgba($primary, 0.05) 0%, transparent 40%),
-            radial-gradient(circle at 100% 100%, rgba($accent, 0.05) 0%, transparent 40%),
-            $bg-main;
+    // Top Spotlight Glow
+    .civ-spotlight {
+        position: absolute;
+        top: -20%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        height: 600px;
+        background: radial-gradient(ellipse at center, rgba($primary, 0.15) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 0;
+        filter: blur(80px);
+    }
+
+    .civ-hero-content {
+        text-align: center;
+        max-width: 800px;
+        position: relative;
+        z-index: 2;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
+        gap: 1.5rem;
 
-        &::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: radial-gradient(rgba($primary, 0.1) 0.5px, transparent 0.5px);
-            background-size: 30px 30px;
-            opacity: 0.5;
-            z-index: 0;
-        }
-
-        @include respond(tablet) {
-            padding: $space-24 $space-6;
-            min-height: auto;
-        }
-
-        &-content {
-            position: relative;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: $space-8;
-        }
-
-        &-badge {
+        // Badge Pill
+        .civ-hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: $space-2;
-            padding: $space-2 $space-4;
-            background-color: white;
-            border: 1px solid $border-color;
-            border-radius: $radius-full;
-            font-size: 0.8125rem;
-            font-weight: 700;
-            color: $primary;
-            @include shadow-sm;
+            gap: 0.5rem;
+            padding: 0.375rem 0.875rem;
+            border-radius: 99rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+
+            .civ-badge-dot {
+                width: 6px;
+                height: 6px;
+                background-color: $primary;
+                border-radius: 50%;
+                box-shadow: 0 0 8px $primary;
+            }
         }
 
         h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            color: $text-main;
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 500; // VaultMatrix uses lighter weight for huge text, relying on tracking
+            letter-spacing: -0.03em;
+            color: white;
             line-height: 1.1;
-
-            span {
-                @include text-gradient;
-            }
+            margin: 0;
+            background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
         }
 
         p {
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             line-height: 1.7;
-            max-width: 850px; // Standard for readability but avoiding "container" logic
-            color: $text-muted;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        &-actions {
+        // CTA Buttons
+        .civ-hero-actions {
             display: flex;
-            gap: $space-4;
+            gap: 1rem;
+            margin-top: 1rem;
 
-            @include respond(mobile) {
-                flex-direction: column;
-                width: 100%;
-            }
-        }
-    }
-
-    &__features {
-        width: 100%;
-        padding: $space-32 10%;
-        background-color: $bg-white;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: $space-20;
-
-        @include respond(tablet) {
-            padding: $space-20 $space-6;
-        }
-
-        &-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: $space-4;
-            text-align: center;
-
-            h2 {
-                font-size: 2.5rem;
-            }
-        }
-
-        &-grid {
-            width: 100%;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: $space-8;
-
-            @include respond(laptop) {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            @include respond(tablet) {
-                grid-template-columns: 1fr;
-            }
-        }
-    }
-
-    &__workflow {
-        width: 100%;
-        padding: $space-32 10%;
-        background-color: $bg-main;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: $space-20;
-
-        &-grid {
-            width: 100%;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: $space-6;
-
-            @include respond(laptop) {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            @include respond(mobile) {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        &-step {
-            background-color: white;
-            padding: $space-10;
-            border-radius: $radius-md;
-            border: 1px solid $border-color;
-            display: flex;
-            flex-direction: column;
-            gap: $space-6;
-            @include transition-premium;
-
-            &:hover {
-                @include card-modern;
-            }
-
-            .step-header {
+            .civ-btn-green {
+                background: linear-gradient(135deg, $primary 0%, darken($primary, 5%) 100%);
+                color: darken($bg-dark, 10%);
+                padding: 0.875rem 1.75rem;
+                border-radius: 0.5rem;
+                font-weight: 700;
                 display: flex;
-                justify-content: space-between;
                 align-items: center;
+                gap: 0.5rem;
+                font-size: 0.9375rem;
+                box-shadow: 0 0 20px rgba($primary, 0.3);
+                transition: all 0.3s;
+                text-decoration: none;
 
-                .step-num {
-                    font-size: 2rem;
-                    font-weight: 800;
-                    color: rgba($primary, 0.1);
-                }
-
-                .step-icon {
-                    color: $primary;
-                    background-color: rgba($primary, 0.05);
-                    padding: $space-3;
-                    border-radius: $radius;
+                &:hover {
+                    box-shadow: 0 0 30px rgba($primary, 0.5);
+                    transform: translateY(-2px);
                 }
             }
 
-            .step-body {
+            .civ-btn-dark {
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                color: white;
+                padding: 0.875rem 1.75rem;
+                border-radius: 0.5rem;
+                font-weight: 600;
                 display: flex;
-                flex-direction: column;
-                gap: $space-2;
+                align-items: center;
+                gap: 0.5rem;
+                font-size: 0.9375rem;
+                transition: all 0.3s;
+                text-decoration: none;
 
-                h3 {
-                    font-size: 1.25rem;
+                .civ-btn-icon {
+                    background: rgba(255, 255, 255, 0.1);
+                    padding: 2px;
+                    border-radius: 4px;
                 }
 
-                p {
-                    font-size: 0.9375rem;
-                    line-height: 1.6;
+                &:hover {
+                    background: rgba(255, 255, 255, 0.1);
+                    border-color: rgba(255, 255, 255, 0.2);
                 }
             }
         }
     }
 
-    &__cta {
+    // Circuit Core Visualization
+    .civ-hero-core {
+        position: relative;
         width: 100%;
-        padding: $space-32 10%;
-        background-color: $bg-white;
+        max-width: 1000px;
+        height: 500px; // Explicit height for absolute positioning
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end; // Shield at bottom center
 
-        &-banner {
+        // SVG Lines (Background)
+        .civ-circuit-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: $space-24;
-            background: linear-gradient(135deg, $bg-dark 0%, #1e293b 100%);
-            border-radius: $radius-lg;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: $space-8;
-            color: white;
-            position: relative;
-            overflow: hidden;
+            height: 100%;
+            z-index: 1;
+            overflow: visible;
 
+            .civ-line {
+                fill: none;
+                stroke: rgba($primary, 0.3);
+                stroke-width: 1.5;
+                vector-effect: non-scaling-stroke;
+            }
+        }
+
+        // Central Shield Core
+        .civ-core-center {
+            position: relative;
+            z-index: 5;
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle at center, rgba($bg-panel, 0.9) 0%, $bg-dark 100%);
+            border: 1px solid rgba($primary, 0.3);
+            border-radius: 50%; // Circular core container
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 50px rgba($primary, 0.1), inset 0 0 20px rgba($primary, 0.05);
+
+            // Rotating dashed ring
             &::before {
                 content: '';
                 position: absolute;
-                top: -50%;
-                left: -50%;
-                width: 200%;
-                height: 200%;
-                background: radial-gradient(circle at center, rgba($primary, 0.1) 0%, transparent 50%);
-                z-index: 0;
+                inset: -10px;
+                border: 1px dashed rgba($primary, 0.3);
+                border-radius: 50%;
+                animation: spin 20s linear infinite;
             }
 
-            h2 {
-                color: white;
-                font-size: 3rem;
-                position: relative;
-                z-index: 1;
+            // Inner Shield Glow
+            .civ-core-glow {
+                position: absolute;
+                width: 60%;
+                height: 60%;
+                background: $primary;
+                filter: blur(40px);
+                opacity: 0.4;
+                border-radius: 50%;
             }
+        }
 
-            p {
-                color: rgba(white, 0.7);
-                font-size: 1.125rem;
-                position: relative;
-                z-index: 1;
-            }
+        // Floating Nodes
+        .civ-node {
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            background: rgba($bg-panel, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.7);
+            z-index: 4;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
 
-            .cta-actions {
-                position: relative;
-                z-index: 1;
+            &:hover {
+                transform: scale(1.1);
+                border-color: $primary;
+                color: $primary;
+                box-shadow: 0 0 20px rgba($primary, 0.2);
             }
+        }
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@include respond(tablet) {
+    .civ-hero-core {
+        height: 350px;
+
+        .civ-circuit-lines {
+            opacity: 0.3; // Fade out complex lines on mobile
+        }
+
+        .civ-node {
+            transform: scale(0.8);
         }
     }
 }

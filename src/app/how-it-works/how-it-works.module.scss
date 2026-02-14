@@ -1,113 +1,149 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixin" as *;
 
-.civ_how {
+.savHow {
     width: 100%;
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 8rem 1.5rem 6rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 8rem;
 
-    &__hero {
-        width: 100%;
-        padding: $space-32 10%;
-        background-color: $bg-white;
+    .savHowHero {
         text-align: center;
+        max-width: 800px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: $space-6;
-
-        @include respond(tablet) {
-            padding: $space-20 $space-6;
-        }
+        gap: 1.5rem;
 
         h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            color: $text-main;
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            color: $text-primary;
+            line-height: 1.1;
+        }
+
+        p {
+            font-size: 1.25rem;
+            color: $text-secondary;
+            line-height: 1.7;
         }
     }
 
-    &__steps {
+    .savTimeline {
         width: 100%;
-        padding: $space-32 10%;
-        background-color: $bg-main;
+        max-width: 1000px;
+        position: relative;
         display: flex;
         flex-direction: column;
-        gap: $space-24;
+        gap: 6rem;
 
-        @include respond(tablet) {
-            padding: $space-20 $space-6;
-            gap: $space-16;
-        }
-    }
-
-    &__step {
-        width: 100%;
-        display: flex;
-        gap: $space-32;
-        align-items: center;
-
-        @include respond(laptop) {
-            gap: $space-12;
-        }
-
-        @include respond(tablet) {
-            flex-direction: column;
-            text-align: center;
-            gap: $space-8;
-        }
-
-        &:nth-child(even) {
-            flex-direction: row-reverse;
+        // Center Line (Desktop)
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba($primary, 0.3), transparent);
+            transform: translateX(-50%);
 
             @include respond(tablet) {
-                flex-direction: column;
+                left: 2rem;
             }
         }
 
-        &-content {
-            flex: 1;
+        .savTimeNode {
             display: flex;
-            flex-direction: column;
-            gap: $space-6;
-
-            .step-num {
-                font-size: 4rem;
-                font-weight: 900;
-                color: rgba($primary, 0.05);
-                line-height: 1;
-                font-family: serif; // For a premium, distinct look
-            }
-
-            h2 {
-                font-size: 2.5rem;
-                color: $text-main;
-            }
-
-            p {
-                font-size: 1.125rem;
-                line-height: 1.8;
-                color: $text-muted;
-            }
-        }
-
-        &-image {
-            flex: 1;
+            align-items: center;
+            justify-content: space-between;
             width: 100%;
-            aspect-ratio: 16/10;
-            background-color: white;
-            border-radius: $radius-lg;
-            border: 1px solid $border-color;
-            @include flex-center;
-            @include shadow-lg;
-            color: $text-light;
-            font-weight: 600;
-        }
-    }
+            position: relative;
 
-    &__cta {
-        padding: $space-16 0;
-        text-align: center;
-        display: flex;
-        justify-content: center;
+            &:nth-child(even) {
+                flex-direction: row-reverse;
+
+                @include respond(tablet) {
+                    flex-direction: row;
+                }
+
+                .savNodeContent {
+                    text-align: left;
+
+                    @include respond(tablet) {
+                        text-align: left;
+                    }
+                }
+            }
+
+            .savNodeMarker {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 3rem;
+                height: 3rem;
+                background: $bg-primary;
+                border: 2px solid $primary;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: $primary;
+                font-weight: 700;
+                z-index: 2;
+                box-shadow: 0 0 20px rgba($primary, 0.4);
+
+                @include respond(tablet) {
+                    left: 2rem;
+                }
+            }
+
+            .savNodeContent {
+                width: 45%;
+                background: rgba(255, 255, 255, 0.03); // Glass
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                padding: 2.5rem;
+                border-radius: $radius-xl;
+                backdrop-filter: blur(10px);
+                transition: all 0.3s;
+
+                &:hover {
+                    border-color: rgba($primary, 0.3);
+                    transform: translateY(-5px);
+                }
+
+                @include respond(tablet) {
+                    width: calc(100% - 4rem - 2rem); // Width - marker - gap
+                    margin-left: auto;
+                }
+
+                h3 {
+                    font-size: 1.75rem;
+                    color: $text-primary;
+                    margin-bottom: 1rem;
+                }
+
+                p {
+                    color: $text-secondary;
+                    line-height: 1.6;
+                    font-size: 1.125rem;
+                }
+            }
+
+            .savNodeVisual {
+                width: 45%;
+                height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                @include respond(tablet) {
+                    display: none;
+                }
+            }
+        }
     }
 }

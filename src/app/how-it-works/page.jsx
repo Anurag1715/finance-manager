@@ -2,61 +2,76 @@
 
 import React from 'react';
 import styles from './how-it-works.module.scss';
-import Button from '@/components/ui/Button/Button';
-import Link from 'next/link';
+import Badge from '@/components/ui/Badge/Badge';
+import { motion } from 'framer-motion';
 
 export default function HowItWorks() {
     const steps = [
         {
-            title: "Report an Issue",
-            description: "Notice a pothole or a broken streetlight? Use our simple form to report it. Add photos and your exact location to help municipal teams find it easily. Everything is tracked from the moment you hit submit.",
-            number: "01"
+            id: 1,
+            title: "Connect Your Ecosystem",
+            text: "Savique integrates with 12,000+ financial institutions. Add checking, savings, investment, and crypto accounts in seconds via secure, read-only APIs.",
         },
         {
-            title: "Review and Assignment",
-            description: "Your report is instantly categorized and reviewed by our system. It's then routed to the relevant department and assigned to an officer. You'll receive real-time updates as things happen.",
-            number: "02"
+            id: 2,
+            title: "Identify & Categorize",
+            text: "Our AI engine scans 12 months of history instantly. It tags every transaction, identifies recurring subscriptions, and flags anomalies that drain your wealth.",
         },
         {
-            title: "Investigation and Resolution",
-            description: "The assigned officer visits the location and performs the necessary repairs. We ensure they have all the data they need from your report to resolve the issue efficiently.",
-            number: "03"
+            id: 3,
+            title: "Optimized Allocation",
+            text: "Set your 'Wealth Rules'. Savique automatically suggests how much to save, invest, or spend based on your real-time cash flow and goals.",
         },
         {
-            title: "Verification and Closing",
-            description: "Once finished, the officer uploads photographic proof of the resolution. Only then is the issue marked as resolved. We close the loop and notify you immediately.",
-            number: "04"
+            id: 4,
+            title: "Compound Growth",
+            text: "Watch your net worth curve accelerate. Get monthly reports on your velocity of money and actionable steps to increase your savings rate.",
         }
     ];
 
     return (
-        <div className={styles.civ_how}>
-            <section className={styles.civ_how__hero}>
-                <h2 className="civ_badge civ_badge--info">The Process</h2>
-                <h1>How It Works</h1>
-                <p>A seamless, transparent loop from reporting to resolution.</p>
-            </section>
+        <section className={styles.savHow}>
+            <motion.div
+                className={styles.savHowHero}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+            >
+                <Badge variant="primary">The Architecture</Badge>
+                <h1>How Savique Works</h1>
+                <p>We've engineered a system that turns raw financial data into actionable wealth strategies.</p>
+            </motion.div>
 
-            <section className={styles.civ_how__steps}>
-                {steps.map((step, idx) => (
-                    <div key={idx} className={styles.civ_how__step}>
-                        <div className={styles['civ_how__step-content']}>
-                            <span className={styles['step-num']}>{step.number}</span>
-                            <h2>{step.title}</h2>
-                            <p>{step.description}</p>
+            <div className={styles.savTimeline}>
+                {steps.map((step, index) => (
+                    <motion.div
+                        className={styles.savTimeNode}
+                        key={step.id}
+                        initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.6, delay: index * 0.2 }}
+                    >
+                        <div className={styles.savNodeMarker}>{step.id}</div>
+
+                        <div className={styles.savNodeContent}>
+                            <h3>{step.title}</h3>
+                            <p>{step.text}</p>
                         </div>
-                        <div className={styles['civ_how__step-image']}>
-                            [Step {step.number} Illustration]
+
+                        {/* Visual Placeholder (could be SVGs or screenshots) */}
+                        <div className={styles.savNodeVisual}>
+                            <div style={{
+                                width: '100%', height: '2px', background: 'rgba(255,255,255,0.1)', position: 'relative'
+                            }}>
+                                <div style={{
+                                    position: 'absolute', top: '-6px', left: '0', width: '12px', height: '12px', background: '#38BDF8', borderRadius: '50%', boxShadow: '0 0 10px #38BDF8'
+                                }} />
+                            </div>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
-
-                <div className={styles.civ_how__cta}>
-                    <Link href="/register">
-                        <Button size="lg">Get Started Today</Button>
-                    </Link>
-                </div>
-            </section>
-        </div>
+            </div>
+        </section>
     );
 }

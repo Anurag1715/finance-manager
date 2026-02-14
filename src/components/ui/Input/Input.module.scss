@@ -1,53 +1,104 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixin" as *;
 
-.civ_input-group {
+.savInputGroup {
     display: flex;
     flex-direction: column;
-    gap: $space-2;
-    padding-bottom: $space-4; // Spacing via padding
+    gap: 0.5rem;
+    width: 100%;
 
-    &__label {
-        font-size: 0.875rem;
+    label {
+        font-size: 0.8125rem;
         font-weight: 600;
-        color: $text-main;
-        padding-left: $space-1;
+        color: $text-secondary;
+        margin-left: 0.25rem;
+        letter-spacing: 0.02em;
     }
 
-    &__field {
-        width: 100%;
-        padding: $space-3 $space-4;
-        font-size: 0.9375rem;
-        color: $text-main;
-        background-color: white;
-        border: 1px solid $border-color;
-        border-radius: $radius;
-        @include transition-premium;
-        outline: none;
+    .savInputWrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
 
-        &::placeholder {
-            color: $text-light;
-        }
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: $radius-md;
+            border: 1px solid rgba(255, 255, 255, 0.1); // Dark border
+            background-color: rgba(0, 0, 0, 0.2); // Darker input bg
+            font-size: 0.9375rem;
+            color: $text-primary;
+            transition: all 0.2s ease;
+            outline: none;
+            font-family: inherit;
 
-        &:focus {
-            border-color: $primary;
-            box-shadow: 0 0 0 4px rgba($primary, 0.1);
-            background-color: white;
-        }
+            &::placeholder {
+                color: rgba($text-secondary, 0.5);
+            }
 
-        &--error {
-            border-color: $danger;
+            &:hover {
+                border-color: rgba(255, 255, 255, 0.2);
+                background-color: rgba(0, 0, 0, 0.3);
+            }
 
             &:focus {
-                box-shadow: 0 0 0 4px rgba($danger, 0.1);
+                border-color: $primary;
+                box-shadow: 0 0 0 3px rgba($primary, 0.15);
+                background-color: rgba(0, 0, 0, 0.4);
             }
+
+            &:disabled {
+                background-color: rgba(255, 255, 255, 0.02);
+                color: $text-muted;
+                cursor: not-allowed;
+            }
+
+            &.savInputError {
+                border-color: $status-danger;
+
+                &:focus {
+                    box-shadow: 0 0 0 3px rgba($status-danger, 0.15);
+                }
+            }
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .savInputIcon {
+            position: absolute;
+            left: 1rem;
+            color: $text-secondary;
+            pointer-events: none;
+        }
+
+        &.hasIcon input {
+            padding-left: 2.75rem;
         }
     }
 
-    &__error-message {
-        font-size: 0.8125rem;
-        color: $danger;
-        padding-left: $space-1;
-        font-weight: 500;
+    .savErrorMessage {
+        font-size: 0.75rem;
+        color: $status-danger;
+        margin-left: 0.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        animation: slideDown 0.2s ease-out;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

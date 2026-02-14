@@ -1,0 +1,97 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixin" as *;
+
+.savWhy {
+    width: 100%;
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 8rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+
+    .savHeader {
+        text-align: center;
+        max-width: 600px;
+
+        h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: $text-primary;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.25rem;
+            color: $text-secondary;
+        }
+    }
+
+    .savWhyGrid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+
+        @include respond(laptop) {
+            grid-template-columns: 1fr;
+        }
+
+        .savWhyCard {
+            background: rgba(255, 255, 255, 0.03); // Glass
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: $radius-xl;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            position: relative;
+            overflow: hidden;
+
+            // Gradient bg on hover
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, rgba($primary, 0.1), transparent 50%);
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+
+            &:hover {
+                transform: translateY(-5px);
+                border-color: rgba($primary, 0.3);
+
+                &::before {
+                    opacity: 1;
+                }
+            }
+
+            .savIcon {
+                color: $primary;
+                margin-bottom: 1rem;
+                padding: 1rem;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: $radius-md;
+                width: fit-content;
+            }
+
+            h3 {
+                font-size: 1.75rem;
+                color: $text-primary;
+                font-weight: 700;
+                z-index: 1;
+            }
+
+            p {
+                font-size: 1.125rem;
+                color: $text-secondary;
+                line-height: 1.6;
+                z-index: 1;
+            }
+        }
+    }
+}
