@@ -1,18 +1,22 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './register.module.scss';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { motion } from 'framer-motion';
-import { UserPlus, Github, Mail, Lock } from 'lucide-react';
+import { UserPlus, Github, Mail, Lock, AlertCircle } from 'lucide-react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import Input from '@/components/ui/Input/Input';
-import Button from '@/components/ui/Button/Button';
-import Checkbox from '@/components/ui/Checkbox/Checkbox';
-import Badge from '@/components/ui/Badge/Badge';
+import { supabase } from '@/shared/supabaseClient';
+import { makeRequest } from '@/shared/api';
+import Input from '@/components/ui/Input';
+import Button from '@/components/ui/Button';
+import Checkbox from '@/components/ui/Checkbox';
+import Badge from '@/components/ui/Badge';
 
 const schema = yup.object().shape({
     fullname: yup.string().required('Full name is required'),
@@ -26,9 +30,27 @@ const schema = yup.object().shape({
 });
 
 const RegisterPage = () => {
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const router = useRouter();
     const { register, handleSubmit, watch, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
+    });
+    const queryClient = useQueryClient();
+
+    const registerMutation = useMutation({
+        mutationFn: (data) =>
+            makeRequest(supabase.auth.signUp({
+                email: data.email,
+                password: data.password,
+                options: {
+                    data: {
+                        full_name: data.fullname,
+                    }
+                }
+            })),
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({ queryKey: ['user'] });
+            router.push('/dashboard');
+        },
     });
 
     const password = watch('password', '');
@@ -45,10 +67,11 @@ const RegisterPage = () => {
     const strength = getStrength();
 
     const onSubmit = (data) => {
-        setIsSubmitting(true);
-        console.log("Register Data:", data);
-        setTimeout(() => setIsSubmitting(false), 2000);
+        registerMutation.mutate(data);
     };
+
+    const isSubmitting = registerMutation.isPending;
+    const error = registerMutation.error?.message;
 
     return (
         <section className={styles.sav_Auth}>
@@ -81,6 +104,13 @@ const RegisterPage = () => {
 
                 <div className={styles.sav_Divider}>Or use email</div>
 
+                {error && (
+                    <div className={styles.sav_ErrorMessage}>
+                        <AlertCircle size={16} />
+                        <span>{error}</span>
+                    </div>
+                )}
+
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <Input
                         label="Full Name"
@@ -88,6 +118,7 @@ const RegisterPage = () => {
                         {...register('fullname')}
                         startIcon={UserPlus}
                         error={errors.fullname?.message}
+                        disabled={isSubmitting}
                     />
 
                     <Input
@@ -96,6 +127,7 @@ const RegisterPage = () => {
                         {...register('email')}
                         startIcon={Mail}
                         error={errors.email?.message}
+                        disabled={isSubmitting}
                     />
 
                     <Input
@@ -105,6 +137,7 @@ const RegisterPage = () => {
                         {...register('password')}
                         startIcon={Lock}
                         error={errors.password?.message}
+                        disabled={isSubmitting}
                     />
 
                     {/* Password Strength Meter */}
@@ -114,14 +147,15 @@ const RegisterPage = () => {
                         <span className={strength >= 3 ? (strength <= 3 ? styles.medium : styles.strong) : ''} />
                         <span className={strength >= 4 ? styles.strong : ''} />
                     </div>
-
+                    {/* 
                     <div className={styles.sav_Terms}>
                         <Checkbox
                             label={<>I agree to the <Link href="/terms">Terms</Link> and <Link href="/privacy">Privacy Policy</Link></>}
                             {...register('agree')}
                             error={!!errors.agree}
+                            disabled={isSubmitting}
                         />
-                    </div>
+                    </div> */}
 
                     <Button type="submit" fullWidth disabled={isSubmitting}>
                         {isSubmitting ? 'Creating Account...' : 'Create Account'}

@@ -12,20 +12,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "CivicTrack | Smart Community Issue Management",
-  description: "Report civic issues and track their resolution in real-time. Empowering citizens and municipalities to build better communities together.",
+  title: "Savique | Premium Wealth Intelligence & Finance Manager",
+  description: "Master your financial future with Savique. Automated tracking, intelligent budgeting, and predictive insights to help you build lasting wealth.",
 };
 
-import Navbar from "@/components/layout/Navbar/Navbar";
-import Footer from "@/components/layout/Footer/Footer";
+import Providers from "@/components/Providers";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

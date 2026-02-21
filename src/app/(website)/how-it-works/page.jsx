@@ -2,7 +2,7 @@
 
 import React from 'react';
 import styles from './how-it-works.module.scss';
-import Badge from '@/components/ui/Badge/Badge';
+import Badge from '@/components/ui/Badge';
 import { motion } from 'framer-motion';
 
 export default function HowItWorks() {

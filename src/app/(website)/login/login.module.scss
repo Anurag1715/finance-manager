@@ -7,25 +7,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 8rem 1.5rem 4rem;
+    padding: 8rem 1.5rem 4rem; // Ensure clears Navbar
     position: relative;
     overflow: hidden;
 
+    // Background Blob
     &::before {
         content: '';
         position: absolute;
-        top: -10%;
+        top: -20%;
         left: -10%;
-        width: 80%;
-        height: 80%;
-        background: radial-gradient(circle, rgba($primary, 0.15), transparent 70%);
-        filter: blur(100px);
+        width: 60%;
+        height: 60%;
+        background: radial-gradient(circle, rgba($primary, 0.2), transparent 70%);
+        filter: blur(80px);
         z-index: 0;
     }
 
     .sav_AuthCard {
         width: 100%;
-        max-width: 480px;
+        max-width: 440px;
         background: rgba(15, 23, 42, 0.6); // Dark Glass
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: $radius-xl;
@@ -33,7 +34,7 @@
         box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.6);
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 2rem;
         backdrop-filter: blur(20px);
         z-index: 1;
 
@@ -56,12 +57,41 @@
             }
         }
 
-        .sav_SocialGrid {
-            display: flex; // Changed from Grid to Flex
-            gap: 1rem;
+        .sav_ErrorMessage {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: rgba($danger, 0.1);
+            border: 1px solid rgba($danger, 0.2);
+            border-radius: $radius-lg;
+            color: $danger;
+            font-size: 0.875rem;
 
-            &>* {
-                flex: 1;
+            svg {
+                flex-shrink: 0;
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+
+            .sav_FormActions {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 0.875rem;
+
+                a {
+                    color: $primary;
+                    font-weight: 500;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
             }
         }
 
@@ -83,50 +113,12 @@
             }
         }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
+        .sav_SocialGrid {
+            display: flex; // Changed from Grid to Flex
+            gap: 1rem;
 
-        .sav_PasswordStrength {
-            display: flex;
-            gap: 2px;
-            height: 4px;
-            border-radius: 2px;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.1);
-            margin-top: -0.5rem;
-
-            span {
+            &>* {
                 flex: 1;
-                background: transparent;
-                transition: background 0.3s;
-
-                &.active {
-                    background: $status-danger; // Default weak
-                }
-
-                &.medium {
-                    background: $status-open;
-                }
-
-                &.strong {
-                    background: $success;
-                }
-            }
-        }
-
-        .sav_Terms {
-            font-size: 0.8125rem;
-            color: $text-secondary;
-
-            a {
-                color: $primary;
-
-                &:hover {
-                    text-decoration: underline;
-                }
             }
         }
 

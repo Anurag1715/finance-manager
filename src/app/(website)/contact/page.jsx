@@ -4,9 +4,9 @@ import React from 'react';
 import styles from './contact.module.scss';
 import clsx from 'clsx';
 import { Send, Mail, MessageSquare, User } from 'lucide-react';
-import Input from '@/components/ui/Input/Input';
-import Button from '@/components/ui/Button/Button';
-import Badge from '@/components/ui/Badge/Badge';
+import Input from '@/components/ui/Input';
+import Button from '@/components/ui/Button';
+import Badge from '@/components/ui/Badge';
 
 const ContactPage = () => {
     return (

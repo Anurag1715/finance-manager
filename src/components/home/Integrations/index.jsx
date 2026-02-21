@@ -4,7 +4,7 @@ import React from 'react';
 import styles from './Integrations.module.scss';
 import { motion } from 'framer-motion';
 import { Landmark, Wallet, Globe, Briefcase, CreditCard, Bitcoin, Building2, Coins } from 'lucide-react';
-import Badge from '@/components/ui/Badge/Badge';
+import Badge from '@/components/ui/Badge';
 
 const Integrations = () => {
     const integrations = [

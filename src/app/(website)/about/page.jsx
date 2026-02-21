@@ -3,7 +3,7 @@
 import React from 'react';
 import styles from './about.module.scss';
 import clsx from 'clsx';
-import Badge from '@/components/ui/Badge/Badge';
+import Badge from '@/components/ui/Badge';
 
 const AboutPage = () => {
     return (

@@ -1,0 +1,310 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixin" as *;
+
+.sav_Overview {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background: #f8fafc;
+    min-height: calc(100vh - 70px);
+
+    .sav_StatsGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+
+        @include respond(tablet) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .sav_StatCard {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        border: 1px solid #f1f5f9;
+
+        .sav_StatInfo {
+            flex: 1;
+
+            .sav_StatLabel {
+                font-size: 0.875rem;
+                color: #64748b;
+                font-weight: 600;
+            }
+
+            .sav_StatValue {
+                font-size: 1.75rem;
+                font-weight: 800;
+                color: #1e293b;
+                margin: 0.5rem 0;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+
+                .sav_StatChange {
+                    font-size: 0.875rem;
+                    color: #10b981;
+                    background: #ecfdf5;
+                    padding: 2px 8px;
+                    border-radius: 6px;
+                }
+            }
+
+            .sav_StatProgress {
+                width: 100%;
+                height: 4px;
+                background: #f1f5f9;
+                border-radius: 99rem;
+                margin-top: 1rem;
+
+                .sav_ProgressBar {
+                    height: 100%;
+                    border-radius: 99rem;
+                }
+            }
+        }
+
+        .sav_StatIcon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 1.5rem;
+        }
+    }
+
+    .sav_MainGrid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 1.5rem;
+
+        @include respond(tablet) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .sav_BottomGrid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 1.5rem;
+
+        @include respond(tablet) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .sav_CardHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0;
+        }
+
+        select {
+            padding: 0.4rem 0.8rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: #64748b;
+            background: white;
+            cursor: pointer;
+        }
+    }
+
+    .sav_ChartContainer,
+    .sav_CategoryCard,
+    .sav_TransactionsCard,
+    .sav_NotificationsCard {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 1.25rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        border: 1px solid #f1f5f9;
+    }
+
+    .sav_ChartPlaceholder {
+        padding: 1rem 0;
+
+        .sav_ChartLabels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+
+            span {
+                font-size: 0.75rem;
+                color: #94a3b8;
+            }
+        }
+    }
+
+    .sav_DoughnutContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+
+        .sav_Doughnut {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient($primary 0% 65%, $accent 65% 85%, #f59e0b 85% 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+
+            .sav_DoughnutCenter {
+                width: 100px;
+                height: 100px;
+                background: white;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                span {
+                    font-size: 1.5rem;
+                    font-weight: 800;
+                    color: #1e293b;
+                }
+            }
+        }
+
+        .sav_CategoryList {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+
+            .sav_CatItem {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                font-size: 0.9rem;
+                color: #64748b;
+                font-weight: 500;
+
+                span {
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 2px;
+                }
+            }
+        }
+    }
+
+    .sav_TableWrapper {
+        overflow-x: auto;
+    }
+
+    .sav_Table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th {
+            text-align: left;
+            padding: 1rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #94a3b8;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        td {
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #334155;
+            border-bottom: 1px solid #f8fafc;
+
+            &.income {
+                color: #10b981;
+                font-weight: 600;
+            }
+
+            &.expense {
+                color: #f43f5e;
+                font-weight: 600;
+            }
+        }
+
+        .status {
+            padding: 4px 10px;
+            border-radius: 99rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+
+            &.completed {
+                background: #ecfdf5;
+                color: #10b981;
+            }
+
+            &.pending {
+                background: #fffbeb;
+                color: #f59e0b;
+            }
+        }
+    }
+
+    .sav_NotifList {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+
+        .sav_NotifItem {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+
+            .notifIcon {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                margin-top: 6px;
+
+                &.success {
+                    background: #10b981;
+                    box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+                }
+
+                &.info {
+                    background: #38bdf8;
+                    box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+                }
+
+                &.warning {
+                    background: #f59e0b;
+                    box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+                }
+            }
+
+            .notifContent {
+                p {
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                    color: #1e293b;
+                    margin: 0;
+                }
+
+                span {
+                    font-size: 0.75rem;
+                    color: #94a3b8;
+                }
+            }
+        }
+    }
+}

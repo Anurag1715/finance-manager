@@ -1,18 +1,22 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './login.module.scss';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { motion } from 'framer-motion';
-import { LogIn, Github, Mail, Lock } from 'lucide-react';
+import { Mail, Lock, AlertCircle, Github } from 'lucide-react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import Input from '@/components/ui/Input/Input';
-import Button from '@/components/ui/Button/Button';
-import Checkbox from '@/components/ui/Checkbox/Checkbox';
-import Badge from '@/components/ui/Badge/Badge';
+import { supabase } from '@/shared/supabaseClient';
+import { makeRequest } from '@/shared/api';
+import Input from '@/components/ui/Input';
+import Button from '@/components/ui/Button';
+import Checkbox from '@/components/ui/Checkbox';
+import Badge from '@/components/ui/Badge';
 
 const schema = yup.object().shape({
     email: yup.string().email('Invalid email').required('Email is required'),
@@ -20,17 +24,30 @@ const schema = yup.object().shape({
 });
 
 const LoginPage = () => {
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const router = useRouter();
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     });
 
+    const queryClient = useQueryClient();
+    const loginMutation = useMutation({
+        mutationFn: (data) =>
+            makeRequest(supabase.auth.signInWithPassword({
+                email: data.email,
+                password: data.password,
+            })),
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({ queryKey: ['user'] });
+            router.push('/dashboard');
+        },
+    });
+
     const onSubmit = (data) => {
-        setIsSubmitting(true);
-        console.log("Login Data:", data);
-        // Simulate API call
-        setTimeout(() => setIsSubmitting(false), 2000);
+        loginMutation.mutate(data);
     };
+
+    const isSubmitting = loginMutation.isPending;
+    const error = loginMutation.error?.message;
 
     return (
         <section className={styles.sav_Auth}>
@@ -62,6 +79,13 @@ const LoginPage = () => {
                 </div>
 
                 <div className={styles.sav_Divider}>Or continue with</div>
+
+                {error && (
+                    <div className={styles.sav_ErrorMessage}>
+                        <AlertCircle size={16} />
+                        <span>{error}</span>
+                    </div>
+                )}
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <Input

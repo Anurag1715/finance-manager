@@ -4,8 +4,8 @@ import React from 'react';
 import styles from './pricing.module.scss';
 import clsx from 'clsx';
 import { Check } from 'lucide-react';
-import Button from '@/components/ui/Button/Button';
-import Badge from '@/components/ui/Badge/Badge';
+import Button from '@/components/ui/Button';
+import Badge from '@/components/ui/Badge';
 
 const PricingPage = () => {
     return (

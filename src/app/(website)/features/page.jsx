@@ -4,7 +4,7 @@ import React from 'react';
 import styles from './features.module.scss';
 import clsx from 'clsx';
 import { Shield, Zap, Layout, Globe, TrendingUp, PieChart } from 'lucide-react';
-import Badge from '@/components/ui/Badge/Badge';
+import Badge from '@/components/ui/Badge';
 
 const FeaturesPage = () => {
     return (
