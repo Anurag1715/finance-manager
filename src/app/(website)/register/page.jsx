@@ -37,8 +37,9 @@ const RegisterPage = () => {
     const queryClient = useQueryClient();
 
     const registerMutation = useMutation({
-        mutationFn: (data) =>
-            makeRequest(supabase.auth.signUp({
+        mutationFn: async (data) => {
+            // Step 1: Sign up the user
+            const authData = await makeRequest(supabase.auth.signUp({
                 email: data.email,
                 password: data.password,
                 options: {
@@ -46,12 +47,26 @@ const RegisterPage = () => {
                         full_name: data.fullname,
                     }
                 }
-            })),
+            }));
+
+            if (!authData?.user) throw new Error("Signup failed");
+
+            // Step 2: Create the profile entry (Step 4 of user guide)
+            await makeRequest(supabase.from('profiles').insert({
+                id: authData.user.id,
+                email: authData.user.email,
+                name: data.fullname,
+                role: 'user' // Default role
+            }));
+
+            return authData;
+        },
         onSuccess: async () => {
             await queryClient.invalidateQueries({ queryKey: ['user'] });
             router.push('/dashboard');
         },
     });
+
 
     const password = watch('password', '');
 

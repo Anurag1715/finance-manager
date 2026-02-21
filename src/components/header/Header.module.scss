@@ -1,0 +1,130 @@
+@use "@/styles/variables" as *;
+
+.sav_Header {
+    height: 80px;
+    padding: 0 2rem;
+    background-color: var(--dash-surface, #FFFFFF);
+    border-bottom: 1px solid var(--dash-border, #E2E8F0);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 90;
+}
+
+
+.sav_Search {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: var(--dash-bg, #F0F9FF);
+    padding: 0.625rem 1rem;
+    border-radius: $radius-lg;
+    width: 300px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+
+    &:focus-within {
+        border-color: var(--dash-primary, #0EA5E9);
+        background-color: white;
+        box-shadow: var(--dash-shadow);
+    }
+
+    input {
+        background: transparent;
+        border: none;
+        outline: none;
+        width: 100%;
+        color: var(--dash-text-primary, #0F172A);
+        font-family: inherit;
+
+        &::placeholder {
+            color: var(--dash-text-secondary, #64748B);
+        }
+    }
+
+    svg {
+        color: var(--dash-text-secondary, #64748B);
+    }
+}
+
+
+.sav_UserActions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.sav_IconBtn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-lg;
+    color: $text-secondary;
+    background: transparent;
+    transition: all 0.2s;
+    position: relative;
+
+    &:hover {
+        background-color: $bg-soft;
+        color: $primary;
+    }
+}
+
+.sav_NotificationDot {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 8px;
+    height: 8px;
+    background-color: $status-danger;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.sav_UserProfile {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.25rem;
+    border-radius: $radius-xl;
+    transition: all 0.2s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--dash-bg, #F0F9FF);
+    }
+}
+
+.sav_Avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: rgba(14, 165, 233, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dash-primary, #0EA5E9);
+    font-weight: 600;
+}
+
+.sav_UserInfo {
+    display: flex;
+    flex-direction: column;
+
+    .sav_UserName {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--dash-text-primary, #0F172A);
+    }
+
+    .sav_UserRole {
+        font-size: 0.75rem;
+        color: var(--dash-text-secondary, #64748B);
+        text-transform: capitalize;
+    }
+}

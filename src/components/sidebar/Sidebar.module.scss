@@ -1,0 +1,120 @@
+@use "@/styles/variables" as *;
+
+.sav_Sidebar {
+    width: 280px;
+    height: 100vh;
+    background-color: var(--dash-surface, #FFFFFF);
+    border-right: 1px solid var(--dash-border, #E2E8F0);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+
+.sav_LogoSection {
+    padding: 2rem 1.5rem;
+}
+
+.sav_Logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--dash-primary, #0EA5E9);
+    letter-spacing: -0.02em;
+
+    .sav_LogoIcon {
+        width: 40px;
+        height: 40px;
+        background: rgba(14, 165, 233, 0.1);
+        border-radius: $radius-lg;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--dash-primary, #0EA5E9);
+    }
+}
+
+.sav_Nav {
+    flex: 1;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.sav_NavItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    color: var(--dash-text-secondary, #64748B);
+    font-weight: 500;
+    border-radius: $radius-lg;
+    transition: all 0.2s ease;
+    position: relative;
+
+    &:hover {
+        background-color: rgba(14, 165, 233, 0.05);
+        color: var(--dash-primary, #0EA5E9);
+    }
+
+    &.active {
+        background-color: rgba(14, 165, 233, 0.1);
+        color: var(--dash-primary, #0EA5E9);
+    }
+}
+
+
+.sav_ActiveIndicator {
+    position: absolute;
+    left: 0;
+    top: 0.75rem;
+    bottom: 0.75rem;
+    width: 4px;
+    background-color: $primary;
+    border-radius: 0 4px 4px 0;
+}
+
+.sav_Badge {
+    margin-left: auto;
+    background-color: $primary;
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 100px;
+}
+
+.sav_SectionLabel {
+    padding: 1.5rem 2rem 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: $text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.sav_SidebarFooter {
+    padding: 1.5rem;
+    border-top: 1px solid $border-light;
+}
+
+.sav_LogoutBtn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    color: $status-danger;
+    font-weight: 500;
+    border-radius: $radius-lg;
+    background: transparent;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-color: rgba($status-danger, 0.05);
+    }
+}

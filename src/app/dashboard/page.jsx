@@ -1,12 +1,29 @@
 "use client";
 
-import React from 'react';
-import Overview from '@/components/dashboard/Overview';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useUser } from '@/shared/hooks/useUser';
+import { useProfile } from '@/shared/hooks/useProfile';
 
-const DashboardPage = () => {
-    return (
-        <Overview />
-    );
+const DashboardRedirectPage = () => {
+    const router = useRouter();
+    const { data: user, isLoading: userLoading } = useUser();
+    const { data: profile, isLoading: profileLoading } = useProfile(user?.id);
+
+    useEffect(() => {
+        if (!userLoading && !profileLoading) {
+            if (profile?.role === 'admin') {
+                router.push('/dashboard/admin');
+            } else {
+                router.push('/dashboard/user');
+            }
+        }
+    }, [user, profile, userLoading, profileLoading, router]);
+
+
+    return null;
 };
 
-export default DashboardPage;
+
+export default DashboardRedirectPage;
+
